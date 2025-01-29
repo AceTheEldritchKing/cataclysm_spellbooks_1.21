@@ -1,5 +1,11 @@
 package net.acetheeldritchking.cataclysm_spellbooks;
 
+import io.redspace.ironsspellbooks.item.SpellBook;
+import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import net.acetheeldritchking.cataclysm_spellbooks.loot.CSLootModifiers;
+import net.acetheeldritchking.cataclysm_spellbooks.registries.*;
+import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -14,8 +20,8 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(CataclysmSpellbooks.MOD_ID)
 public class CataclysmSpellbooks
 {
@@ -27,6 +33,25 @@ public class CataclysmSpellbooks
         modEventBus.addListener(this::commonSetup);
 
         NeoForge.EVENT_BUS.register(this);
+
+        // Creative Tab
+        CSCreativeModeTabs.register(modEventBus);
+        // Items
+        ItemRegistries.register(modEventBus);
+        // Attributes
+        CSAttributeRegistry.register(modEventBus);
+        // Schools
+        CSSchoolRegistry.register(modEventBus);
+        // Spells
+        SpellRegistries.register(modEventBus);
+        // Effects
+        CSPotionEffectRegistry.register(modEventBus);
+        // Sounds
+        // Entities
+        CSEntityRegistry.register(modEventBus);
+        // Armor Materials
+        // Loot Tables
+        CSLootModifiers.register(modEventBus);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         //modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -52,6 +77,12 @@ public class CataclysmSpellbooks
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // Some client setup code
+            ItemRegistries.getCSItems().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
         }
+    }
+
+    public static ResourceLocation id(@NotNull String path)
+    {
+        return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, path);
     }
 }
