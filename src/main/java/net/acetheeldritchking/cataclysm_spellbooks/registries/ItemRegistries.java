@@ -42,6 +42,8 @@ public class ItemRegistries {
     /***
      * Generic Items
      */
+    // Abyssal Rune
+    public static final DeferredHolder<Item, Item> ABYSSAL_RUNE = ITEMS.register("abyssal_rune", () -> new Item(ItemPropertiesHelper.material()));
 
     /***
      * Upgrade Orbs
