@@ -3,7 +3,7 @@ package net.acetheeldritchking.cataclysm_spellbooks.registries;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
-import net.acetheeldritchking.cataclysm_spellbooks.utils.CSTags;
+import net.acetheeldritchking.cataclysm_spellbooks.util.CSTags;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;

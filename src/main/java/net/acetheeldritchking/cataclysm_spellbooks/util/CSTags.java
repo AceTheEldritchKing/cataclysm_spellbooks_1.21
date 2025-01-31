@@ -1,4 +1,4 @@
-package net.acetheeldritchking.cataclysm_spellbooks.utils;
+package net.acetheeldritchking.cataclysm_spellbooks.util;
 
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
 import net.minecraft.resources.ResourceLocation;
