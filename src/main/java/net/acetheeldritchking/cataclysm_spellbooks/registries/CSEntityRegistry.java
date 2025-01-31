@@ -2,6 +2,9 @@ package net.acetheeldritchking.cataclysm_spellbooks.registries;
 
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.mobs.*;
+import net.acetheeldritchking.cataclysm_spellbooks.entity.spells.blazing_aoe.BlazingAoE;
+import net.acetheeldritchking.cataclysm_spellbooks.entity.spells.hellish_blade.HellishBladeProjectile;
+import net.acetheeldritchking.cataclysm_spellbooks.entity.spells.infernal_blade.InfernalBladeProjectile;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -15,6 +18,32 @@ public class CSEntityRegistry {
             DeferredRegister.create(Registries.ENTITY_TYPE, CataclysmSpellbooks.MOD_ID);
 
     // Projectiles //
+    // Infernal Blade Projectile
+    public static final DeferredHolder<EntityType<?>, EntityType<InfernalBladeProjectile>> INFERNAL_BLADE_PROJECTILE =
+            ENTITIES.register("infernal_blade", () -> EntityType.Builder.<InfernalBladeProjectile>of(InfernalBladeProjectile::new, MobCategory.MISC)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "infernal_blade").toString()
+                    ));
+
+    // Hellish Blade Projectile
+    public static final DeferredHolder<EntityType<?>, EntityType<HellishBladeProjectile>> HELLISH_BLADE_PROJECTILE =
+            ENTITIES.register("hellish_blade", () -> EntityType.Builder.<HellishBladeProjectile>of(HellishBladeProjectile::new, MobCategory.MISC)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "hellish_blade").toString()
+                    ));
+
+    // Blazing AoE Entity
+    public static final DeferredHolder<EntityType<?>, EntityType<BlazingAoE>> BLAZING_AOE_ENTITY =
+            ENTITIES.register("blazing_aoe", () -> EntityType.Builder.<BlazingAoE>of(BlazingAoE::new, MobCategory.MISC)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "blazing_aoe").toString()
+                    ));
 
 
     // Entities //
