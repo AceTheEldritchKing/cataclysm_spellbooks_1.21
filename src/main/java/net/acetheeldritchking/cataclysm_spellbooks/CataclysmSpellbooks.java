@@ -2,6 +2,7 @@ package net.acetheeldritchking.cataclysm_spellbooks;
 
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import net.acetheeldritchking.cataclysm_spellbooks.items.armor.CSArmorMaterialRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.loot.CSLootModifiers;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.*;
 import net.minecraft.resources.ResourceLocation;
@@ -50,6 +51,7 @@ public class CataclysmSpellbooks
         // Entities
         CSEntityRegistry.register(modEventBus);
         // Armor Materials
+        CSArmorMaterialRegistry.register(modEventBus);
         // Loot Tables
         CSLootModifiers.register(modEventBus);
 

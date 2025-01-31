@@ -78,7 +78,7 @@ public class CSArmorItem extends ArmorItem implements GeoItem {
     }
 
     // AzureLib
-     @Override
+    @Override
     public void createRenderer(Consumer<RenderProvider> consumer) {
         // Can I just leave this empty?
     }

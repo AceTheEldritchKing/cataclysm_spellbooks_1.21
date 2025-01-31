@@ -19,7 +19,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class DTEArmorMaterialRegistry {
+public class CSArmorMaterialRegistry {
     private static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, CataclysmSpellbooks.MOD_ID);
 
     // Ignis Wizard Armor
