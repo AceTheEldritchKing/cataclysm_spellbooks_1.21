@@ -73,8 +73,8 @@ public class HellishBladeProjectile extends AbstractMagicProjectile implements G
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
         var target = pResult.getEntity();
-        //DamageSources.applyDamage(target, damage,
-                //SpellRegistries.HELLISH_BLADE.get().getDamageSource(this, getOwner()));
+        DamageSources.applyDamage(target, damage,
+                SpellRegistries.HELLISH_BLADE.get().getDamageSource(this, getOwner()));
         if (target instanceof LivingEntity livingTarget)
         {
             livingTarget.addEffect(new MobEffectInstance(ModEffect.EFFECTBLAZING_BRAND, 100, 0));

@@ -17,6 +17,7 @@ import net.minecraft.util.Mth;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
+import software.bernie.geckolib.util.Color;
 
 import java.util.Collections;
 import java.util.Random;
@@ -29,7 +30,7 @@ public class InfernalBladeRenderer extends GeoEntityRenderer<InfernalBladeProjec
 
     @Override
     public ResourceLocation getTextureLocation(InfernalBladeProjectile animatable) {
-        return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/hellish_blade/infernal_blade.png");
+        return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/infernal_blade_small/infernal_blade_small.png");
     }
 
     @Override
@@ -43,15 +44,15 @@ public class InfernalBladeRenderer extends GeoEntityRenderer<InfernalBladeProjec
 
         poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTick, infernalBladeProjectile.yRotO, infernalBladeProjectile.getYRot())));
         poseStack.mulPose(Axis.XP.rotationDegrees(-Mth.lerp(partialTick, infernalBladeProjectile.xRotO, infernalBladeProjectile.getXRot())));
-        //float randomZ = new Random(31L * infernalBladeProjectile.getId()).nextInt(-8, 8);
-        //poseStack.mulPose(Axis.XP.rotationDegrees(randomZ));
+        float randomZ = new Random(31L * infernalBladeProjectile.getId()).nextInt(-8, 8);
+        poseStack.mulPose(Axis.XP.rotationDegrees(randomZ));
 
         poseStack.popPose();
 
         super.render(infernalBladeProjectile, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }
 
-    // Doesn't need to spin tbh
+    // Help
     /*@Override
     public void render(InfernalBladeProjectile projectile, float yaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         poseStack.pushPose();
@@ -59,18 +60,16 @@ public class InfernalBladeRenderer extends GeoEntityRenderer<InfernalBladeProjec
         poseStack.mulPose(Axis.XP.rotationDegrees(-Mth.lerp(partialTick, projectile.xRotO, projectile.getXRot())));
 
         //GeoModel model = this.modelProvider.getModel(modelProvider.getModelResource(animatable));
-        this.dispatchedMat = poseStack.last().pose().copy();
-        setCurrentModelRenderCycle(EModelRenderCycle.INITIAL);
-        AnimationEvent<InfernalBladeProjectile> predicate = new AnimationEvent<>(projectile, 0, 0, partialTick, false, Collections.singletonList(new EntityModelData()));
-        modelProvider.setCustomAnimations(projectile, getInstanceId(projectile), predicate);
+        //this.entityRenderDispatcher = poseStack.last().pose().copy();
+        //setCurrentModelRenderCycle(EModelRenderCycle.INITIAL);
+        //AnimationEvent<InfernalBladeProjectile> predicate = new AnimationEvent<>(projectile, 0, 0, partialTick, false, Collections.singletonList(new EntityModelData()));
+        //modelProvider.setCustomAnimations(projectile, getInstanceId(projectile), predicate);
         RenderSystem.setShaderTexture(0, getTextureLocation(projectile));
-        Color renderColor = getRenderColor(projectile, partialTick, poseStack, bufferSource, null, packedLight);
-        RenderType renderType = getRenderType(projectile, partialTick, poseStack, bufferSource, null, packedLight, getTextureLocation(projectile));
+        Color renderColor = getRenderColor(projectile, partialTick, packedLight);
+        RenderType renderType = getRenderType(projectile, getTextureLocation(projectile), bufferSource, packedLight);
         if (!projectile.isInvisibleTo(Minecraft.getInstance().player))
         {
-            render(model, projectile, partialTick, renderType, poseStack, bufferSource, null, packedLight,
-                    getPackedOverlay(projectile, 0), renderColor.getRed() / 255f, renderColor.getGreen() / 255f,
-                    renderColor.getBlue() / 255f, renderColor.getAlpha() / 255f);
+            render(projectile, yaw, partialTick, poseStack, bufferSource, packedLight);
         }
 
         poseStack.popPose();

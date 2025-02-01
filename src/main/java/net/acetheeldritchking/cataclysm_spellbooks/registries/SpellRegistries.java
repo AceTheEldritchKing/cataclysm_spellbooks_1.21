@@ -8,6 +8,7 @@ import net.acetheeldritchking.cataclysm_spellbooks.spells.ender.GravityStormSpel
 import net.acetheeldritchking.cataclysm_spellbooks.spells.ender.VoidRuneBulwarkSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.ender.VoidRuneSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.evocation.PilferSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.fire.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -80,33 +81,33 @@ public class SpellRegistries {
 
     // FIRE //
     // Incineration (Fire) (Summon Fire runes in row) - Requires Burning Ashes
-    //public static final Supplier<AbstractSpell> INCINERATION = registerSpell(new IncinerationSpell());
+    public static final Supplier<AbstractSpell> INCINERATION = registerSpell(new IncinerationSpell());
 
     // Infernal Strike (Summon mini Incinerator, inflicts blazing brand) - Requires Burning Ashes
-    //public static final Supplier<AbstractSpell> INFERNAL_STRIKE = registerSpell(new InfernalStrikeSpell());
+    public static final Supplier<AbstractSpell> INFERNAL_STRIKE = registerSpell(new InfernalStrikeSpell());
 
     // Summon Ignited Revenant (Just as the name says) - Requires Burning Ashes (I AM NOT READY AT ALL TO DO THIS SPELL)
-    //public static final Supplier<AbstractSpell> CONJURE_IGNITED_REINFORCEMENT = registerSpell(new ConjureIgnitedReinforcement());
+    public static final Supplier<AbstractSpell> CONJURE_IGNITED_REINFORCEMENT = registerSpell(new ConjureIgnitedReinforcement());
 
     // Hellish Blade (Summon a large Incinerator from the ground to strike and lock in a target for a short amount of time, preventing movement) - Requires Burning Ashes
-    //public static final Supplier<AbstractSpell> HELLISH_BLADE = registerSpell(new HellishBladeSpell());
+    public static final Supplier<AbstractSpell> HELLISH_BLADE = registerSpell(new HellishBladeSpell());
 
     // Bone Storm (Sprays out blazing bones in all directions like the Revernant)
-    //public static final Supplier<AbstractSpell> BONE_STORM = registerSpell(new BoneStormSpell());
+    public static final Supplier<AbstractSpell> BONE_STORM = registerSpell(new BoneStormSpell());
 
     // Blazing Bone Spit (Shoots out a single blazing bone)
-    //public static final Supplier<AbstractSpell> BONE_PIERCE = registerSpell(new BonePierceSpell());
+    public static final Supplier<AbstractSpell> BONE_PIERCE = registerSpell(new BonePierceSpell());
 
     // Ashen Breath (Spews out ash breath in front of the caster)
-    //public static final Supplier<AbstractSpell> ASHEN_BREATH = registerSpell(new AshenBreathSpell());
+    public static final Supplier<AbstractSpell> ASHEN_BREATH = registerSpell(new AshenBreathSpell());
 
     // Abyss Fireball (Gurl even I don't know wtf it does)
-    //public static final Supplier<AbstractSpell> ABYSS_FIREBALL = registerSpell(new AbyssFireballSpell());
+    public static final Supplier<AbstractSpell> ABYSS_FIREBALL = registerSpell(new AbyssFireballSpell());
 
     // Summon Ignis (April Fools spell)
 
     // Tectonic Tremble
-    //public static final Supplier<AbstractSpell> TECTONIC_TREMBLE = registerSpell(new TectonicTrembleSpell());
+    public static final Supplier<AbstractSpell> TECTONIC_TREMBLE = registerSpell(new TectonicTrembleSpell());
 
 
     // LIGHTNING //

@@ -100,8 +100,8 @@ public class InfernalBladeProjectile extends AbstractMagicProjectile implements 
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
         var target = pResult.getEntity();
-        //DamageSources.applyDamage(target, damage,
-                //SpellRegistries.INFERNAL_STRIKE.get().getDamageSource(this, getOwner()));
+        DamageSources.applyDamage(target, damage,
+                SpellRegistries.INFERNAL_STRIKE.get().getDamageSource(this, getOwner()));
         if (target instanceof LivingEntity livingTarget)
         {
             livingTarget.addEffect(new MobEffectInstance(ModEffect.EFFECTBLAZING_BRAND, 100, 0));
