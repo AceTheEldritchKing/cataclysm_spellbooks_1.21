@@ -32,11 +32,11 @@ public class VoidRunePotionEffect extends MobEffect {
             }
         }
 
-        return applyEffectTick(pLivingEntity, pAmplifier);
+        return true;
     }
 
     @Override
     public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
-        return duration % 8 == 0;
+        return duration % 25 == 0;
     }
 }

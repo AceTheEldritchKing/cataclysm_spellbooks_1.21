@@ -3,6 +3,10 @@ package net.acetheeldritchking.cataclysm_spellbooks.registries;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.abyssal.*;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.ender.GravitationPullSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.ender.GravityStormSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.ender.VoidRuneBulwarkSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.ender.VoidRuneSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -47,14 +51,17 @@ public class SpellRegistries {
 
     // ENDER //
     // Void Rune (Ender)
+    public static final Supplier<AbstractSpell> VOID_RUNE = registerSpell(new VoidRuneSpell());
 
     // Void Bulwark (Summon void rune shield around the caster)
+    public static final Supplier<AbstractSpell> VOID_BULWARK = registerSpell(new VoidRuneBulwarkSpell());
 
     // Gravity Storm (Ender)
+    public static final Supplier<AbstractSpell> GRAVITY_STORM = registerSpell(new GravityStormSpell());
 
     // Gravitational Pull (Pulls entities in like Gauntlet of Guard)
-
-    // Summon End Guardian (April Fools spell)
+    // Removing this in 1.21.1, I want to rework it
+    //public static final Supplier<AbstractSpell> GRAVITATION_PULL = registerSpell(new GravitationPullSpell());
 
 
     // EVOCATION //
