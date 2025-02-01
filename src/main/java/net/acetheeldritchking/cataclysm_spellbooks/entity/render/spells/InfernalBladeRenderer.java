@@ -15,11 +15,26 @@ import software.bernie.geckolib.model.data.EntityModelData;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 import java.util.Collections;
+import java.util.Random;
 
 public class InfernalBladeRenderer extends GeoEntityRenderer<InfernalBladeProjectile> {
     public InfernalBladeRenderer(EntityRendererProvider.Context context) {
         super(context, new InfernalBladeModel());
         this.shadowRadius = 0.5f;
+    }
+
+    @Override
+    public void render(InfernalBladeProjectile infernalBladeProjectile, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+        poseStack.pushPose();
+
+        poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTick, infernalBladeProjectile.yRotO, infernalBladeProjectile.getYRot())));
+        poseStack.mulPose(Axis.XP.rotationDegrees(-Mth.lerp(partialTick, infernalBladeProjectile.xRotO, infernalBladeProjectile.getXRot())));
+        //float randomZ = new Random(31L * infernalBladeProjectile.getId()).nextInt(-8, 8);
+        //poseStack.mulPose(Axis.XP.rotationDegrees(randomZ));
+
+        poseStack.popPose();
+
+        super.render(infernalBladeProjectile, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }
 
     // Doesn't need to spin tbh
