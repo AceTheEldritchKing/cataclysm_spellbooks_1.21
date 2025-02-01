@@ -9,6 +9,8 @@ import net.acetheeldritchking.cataclysm_spellbooks.spells.ender.VoidRuneBulwarkS
 import net.acetheeldritchking.cataclysm_spellbooks.spells.ender.VoidRuneSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.evocation.PilferSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.fire.*;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.holy.ConjureKoboldiatorSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.holy.ConjureKoboletonSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -73,10 +75,10 @@ public class SpellRegistries {
 
     // HOLY //
     // Summon Koboldiator
-    //public static final Supplier<AbstractSpell> CONJURE_KOBOLDIATOR = registerSpell(new ConjureKoboldiatorSpell());
+    public static final Supplier<AbstractSpell> CONJURE_KOBOLDIATOR = registerSpell(new ConjureKoboldiatorSpell());
 
     // Summon Koboleton (Summon Koboletons)
-    //public static final Supplier<AbstractSpell> CONJURE_KOBOLETON = registerSpell(new ConjureKoboletonSpell());
+    public static final Supplier<AbstractSpell> CONJURE_KOBOLETON = registerSpell(new ConjureKoboletonSpell());
 
 
     // FIRE //
