@@ -3,12 +3,16 @@ package net.acetheeldritchking.cataclysm_spellbooks.entity.render.spells;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
+import net.acetheeldritchking.cataclysm_spellbooks.entity.spells.hellish_blade.HellishBladeProjectile;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.spells.infernal_blade.InfernalBladeModel;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.spells.infernal_blade.InfernalBladeProjectile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
@@ -21,6 +25,16 @@ public class InfernalBladeRenderer extends GeoEntityRenderer<InfernalBladeProjec
     public InfernalBladeRenderer(EntityRendererProvider.Context context) {
         super(context, new InfernalBladeModel());
         this.shadowRadius = 0.5f;
+    }
+
+    @Override
+    public ResourceLocation getTextureLocation(InfernalBladeProjectile animatable) {
+        return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/hellish_blade/infernal_blade.png");
+    }
+
+    @Override
+    public boolean shouldRender(InfernalBladeProjectile livingEntity, Frustum camera, double camX, double camY, double camZ) {
+        return super.shouldRender(livingEntity, camera, camX, camY, camZ);
     }
 
     @Override

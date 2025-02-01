@@ -27,6 +27,12 @@ public class CSCreativeModeTabs {
                         output.accept(ItemRegistries.IGNIS_SPELL_BOOK.get());
                         output.accept(ItemRegistries.DESERT_SPELL_BOOK.get());
                         output.accept(ItemRegistries.CODEX_OF_MALICE.get());
+                        // Staves
+                        output.accept(ItemRegistries.BLOOM_STONE_STAFF.get());
+                        output.accept(ItemRegistries.CORAL_STAFF.get());
+                        output.accept(ItemRegistries.FAKE_WUDJETS_STAFF.get());
+                        output.accept(ItemRegistries.VOID_STAFF.get());
+                        output.accept(ItemRegistries.SPIRIT_SUNDERER_STAFF.get());
                         // Weapons
                         // Armor
                         output.accept(ItemRegistries.IGNITIUM_WIZARD_HELMET.get());

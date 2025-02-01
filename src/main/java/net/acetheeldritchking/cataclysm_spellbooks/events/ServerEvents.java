@@ -128,7 +128,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public static void onLivingTickEvent(EntityTickEvent event)
+    public static void onLivingTickEvent(EntityTickEvent.Pre event)
     {
         Entity entity = event.getEntity();
         Level level = entity.level();
@@ -159,7 +159,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public static void handleResistanceAttributeSpawn(MobSpawnEvent event)
+    public static void handleResistanceAttributeSpawn(FinalizeSpawnEvent event)
     {
         var mob = event.getEntity();
 
@@ -208,7 +208,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public void standOnFluidEvent(StandOnFluidEvent event)
+    public static void standOnFluidEvent(StandOnFluidEvent event)
     {
         LivingEntity entity = event.getEntity();
         ItemStack bootEquipment = entity.getItemBySlot(EquipmentSlot.FEET);
@@ -233,7 +233,7 @@ public class ServerEvents {
 
     // Modify Spell Event
     @SubscribeEvent
-    public void onSpellModifyEvent(ModifySpellLevelEvent event)
+    public static void onSpellModifyEvent(ModifySpellLevelEvent event)
     {
         /*
         if (event.getEntity().getItemBySlot(EquipmentSlot.MAINHAND).is(ItemRegistries.BLOOM_STONE_STAFF.get()))
@@ -249,7 +249,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public void onEffectRemove(MobEffectEvent event)
+    public static void onEffectRemove(MobEffectEvent.Remove event)
     {
         /*
         Entity entity = event.getEntity();
@@ -277,7 +277,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public void onEffectExpire(MobEffectEvent.Expired event)
+    public static void onEffectExpire(MobEffectEvent.Expired event)
     {
 
         Entity entity = event.getEntity();
@@ -316,7 +316,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public void onFallEvent(LivingFallEvent event)
+    public static void onFallEvent(LivingFallEvent event)
     {
         Entity entity = event.getEntity();
 
@@ -332,7 +332,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public void onLivingDeathEvent(LivingDeathEvent event)
+    public static void onLivingDeathEvent(LivingDeathEvent event)
     {
         DamageSource damageSource = event.getSource();
         Entity entity = event.getEntity();
@@ -342,7 +342,7 @@ public class ServerEvents {
         {
             if (!livingEntity.level().isClientSide())
             {
-                if (!damageSource.getEntity().isInvulnerable())
+                if (!damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
                 {
                     if (CSUtils.tryCurisumChestplateRebirth(livingEntity))
                     {
@@ -354,7 +354,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public void onLivingAttackEvent(LivingIncomingDamageEvent event) {
+    public static void onLivingAttackEvent(LivingIncomingDamageEvent event) {
         Entity entity = event.getEntity();
 
         // Cursium Legs

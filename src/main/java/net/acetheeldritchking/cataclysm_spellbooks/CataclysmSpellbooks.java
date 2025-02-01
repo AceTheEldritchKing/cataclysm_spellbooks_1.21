@@ -2,9 +2,12 @@ package net.acetheeldritchking.cataclysm_spellbooks;
 
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import net.acetheeldritchking.cataclysm_spellbooks.entity.render.spells.HellishBladeRenderer;
+import net.acetheeldritchking.cataclysm_spellbooks.entity.render.spells.InfernalBladeRenderer;
 import net.acetheeldritchking.cataclysm_spellbooks.items.armor.CSArmorMaterialRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.loot.CSLootModifiers;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.*;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;

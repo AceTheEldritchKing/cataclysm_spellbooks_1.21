@@ -2,7 +2,9 @@ package net.acetheeldritchking.cataclysm_spellbooks.registries;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.abyssal.*;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -22,20 +24,25 @@ public class SpellRegistries {
 
     // ABYSSAL //
     // Void Beam
+    public static final Supplier<AbstractSpell> VOID_BEAM = registerSpell(new VoidBeamSpell());
 
     // Abyssal Blast (Summon Leviathan death beam)
+    public static final Supplier<AbstractSpell> ABYSSAL_BLAST = registerSpell(new AbyssalBlastSpell());
 
     // Dimensional Rift (Summon a rift)
+    public static final Supplier<AbstractSpell> DIMENSIONAL_RIFT = registerSpell(new DimensionalRiftSpell());
 
     // Depth Charge (Summon mines)
+    public static final Supplier<AbstractSpell> DEPTH_CHARGE = registerSpell(new DepthChargeSpell());
 
     // Abyssal Predator (Buffs while underwater)
+    public static final Supplier<AbstractSpell> ABYSSAL_PREDATOR = registerSpell(new AbyssalPredatorSpell());
 
     // Tidal Tear (Melee attack which ends in a shockwave)
+    public static final Supplier<AbstractSpell> ABYSSAL_SLASH = registerSpell(new AbyssalSlashSpell());
 
     // Tidal Claw (Summons Tidal Claw that grabs target) - Requires Tidal Claw
-
-    // Summon Leviathan (April Fools spell)
+    public static final Supplier<AbstractSpell> TIDAL_GRAB = registerSpell(new TidalGrabSpell());
 
 
     // ENDER //

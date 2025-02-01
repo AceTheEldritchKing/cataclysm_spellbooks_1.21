@@ -17,7 +17,7 @@ import net.neoforged.neoforge.client.event.ViewportEvent;
 public class ClientEvents {
 
     @SubscribeEvent
-    public void onFogDensity(ViewportEvent.RenderFog event)
+    public static void onFogDensity(ViewportEvent.RenderFog event)
     {
         // Lava vision for Ignis helmet
         FogType fogType = event.getCamera().getFluidInCamera();
@@ -31,7 +31,7 @@ public class ClientEvents {
     }
 
     @SubscribeEvent
-    public void renderBlockScreenEvent(RenderBlockScreenEffectEvent event)
+    public static void renderBlockScreenEvent(RenderBlockScreenEffectEvent event)
     {
         // Removes fire on screen when in lava
         ItemStack itemStack = Minecraft.getInstance().player.getInventory().getArmor(3);
