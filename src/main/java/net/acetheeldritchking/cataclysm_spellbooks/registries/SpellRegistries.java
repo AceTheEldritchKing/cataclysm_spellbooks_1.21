@@ -14,6 +14,10 @@ import net.acetheeldritchking.cataclysm_spellbooks.spells.holy.ConjureKoboletonS
 import net.acetheeldritchking.cataclysm_spellbooks.spells.ice.ConjureThrallsSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.ice.CursedRushSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.ice.MalevolentBattlefieldSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.nature.AmethystPunctureSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.nature.DesertWindsSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.nature.MonolithCrashSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.nature.SandstormSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -147,16 +151,16 @@ public class SpellRegistries {
 
     // NATURE //
     // Sandstorm (Summon desert tornadoes around the user)
-    //public static final Supplier<AbstractSpell> SANDSTORM = registerSpell(new SandstormSpell());
+    public static final Supplier<AbstractSpell> SANDSTORM = registerSpell(new SandstormSpell());
 
     // Desert Winds (Throw a desert tornado in a path in front of the user. This damages blocks)
-    //public static final Supplier<AbstractSpell> DESERT_WINDS = registerSpell(new DesertWindsSpell());
+    public static final Supplier<AbstractSpell> DESERT_WINDS = registerSpell(new DesertWindsSpell());
 
     // Monolith Crash (Crashes down sandstone monoliths around the caster)
-    //public static final Supplier<AbstractSpell> MONOLITH_CRASH = registerSpell(new MonolithCrashSpell());
+    public static final Supplier<AbstractSpell> MONOLITH_CRASH = registerSpell(new MonolithCrashSpell());
 
     // Amethyst Puncture (Shoots out an amethyst spike)
-    //public static final Supplier<AbstractSpell> AMETHYST_PUNCTURE = registerSpell(new AmethystPunctureSpell());
+    public static final Supplier<AbstractSpell> AMETHYST_PUNCTURE = registerSpell(new AmethystPunctureSpell());
 
     // Summon Ancient Remnant (April Fools spell)
 

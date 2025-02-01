@@ -18,13 +18,13 @@ import java.util.function.Supplier;
 public class CSWeaponTiers implements Tier, IronsWeaponTier {
     // Monstrous Flamberge (Flamberge + Monstrous horn)
     public static CSWeaponTiers MONSTROUS_FLAMBERGE = new CSWeaponTiers(1561, 10, -2.7f, 15, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(Items.NETHERITE_SCRAP),
-            new AttributeContainer(Attributes.ARMOR, 5, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(Attributes.ARMOR, 5, AttributeModifier.Operation.ADD_VALUE),
             new AttributeContainer(AttributeRegistry.FIRE_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
     // Spellstealer (Khopesh + Spellbreaker)
     public static CSWeaponTiers SPELLSTEALER = new CSWeaponTiers(1000, 5, -2.6f, 20, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(Items.NETHERITE_SCRAP),
-            new AttributeContainer(Attributes.ARMOR, 5, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(Attributes.ARMOR, 5, AttributeModifier.Operation.ADD_VALUE),
             new AttributeContainer(AttributeRegistry.FIRE_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 

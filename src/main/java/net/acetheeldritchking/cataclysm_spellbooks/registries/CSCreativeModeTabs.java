@@ -22,6 +22,7 @@ public class CSCreativeModeTabs {
                         output.accept(ItemRegistries.ABYSSAL_RUNE.get());
                         output.accept(ItemRegistries.ABYSSAL_UPGRADE_ORB.get());
                         // Curios
+                        output.accept(ItemRegistries.LEVIATHANS_BLESSING.get());
                         // Spellbooks
                         output.accept(ItemRegistries.ABYSS_SPELL_BOOK.get());
                         output.accept(ItemRegistries.IGNIS_SPELL_BOOK.get());
@@ -34,6 +35,7 @@ public class CSCreativeModeTabs {
                         output.accept(ItemRegistries.VOID_STAFF.get());
                         output.accept(ItemRegistries.SPIRIT_SUNDERER_STAFF.get());
                         // Weapons
+                        output.accept(ItemRegistries.MONSTROUS_FLAMBERGE.get());
                         // Armor
                         output.accept(ItemRegistries.IGNITIUM_WIZARD_HELMET.get());
                         output.accept(ItemRegistries.IGNITIUM_WIZARD_CHESTPLATE.get());

@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 public class AddItemModifier extends LootModifier {
     public static final Supplier<MapCodec<AddItemModifier>> CODEC = Suppliers.memoize(()
     -> RecordCodecBuilder.mapCodec(inst -> codecStart(inst).and(
-            Codec.STRING.fieldOf("item").forGetter(m -> m.lootTable)).apply(inst, AddItemModifier::new)));
+            Codec.STRING.fieldOf("loot_table").forGetter(m -> m.lootTable)).apply(inst, AddItemModifier::new)));
     private final String lootTable;
 
     protected AddItemModifier(LootItemCondition[] conditionsIn, String item) {
@@ -32,7 +32,10 @@ public class AddItemModifier extends LootModifier {
         ResourceLocation resourcePath = ResourceLocation.parse(lootTable);
         var addedLootTable = lootContext.getLevel().getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, resourcePath));
 
-        addedLootTable.getRandomItemsRaw(lootContext, generatedLoot::add);
+        ObjectArrayList<ItemStack> items = new ObjectArrayList<>();
+        addedLootTable.getRandomItemsRaw(lootContext, items::add);
+
+        generatedLoot.addAll(items);
 
         return generatedLoot;
     }

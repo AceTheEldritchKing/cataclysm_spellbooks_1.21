@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 
 public class CursiumMageArmorItem extends ImbuableCSArmorItem {
     public CursiumMageArmorItem(Type slot, Properties settings) {
-        super(CSArmorMaterialRegistry.CURSIUM_WARLOCK_ARMOR, slot, settings, schoolAttributesWithResistance(AttributeRegistry.FIRE_SPELL_POWER, AttributeRegistry.MANA_REGEN, 150, 0.15F, 0.05F, 0.05F));
+        super(CSArmorMaterialRegistry.CURSIUM_WARLOCK_ARMOR, slot, settings, schoolAttributesWithResistance(AttributeRegistry.ICE_SPELL_POWER, AttributeRegistry.MANA_REGEN, 150, 0.15F, 0.05F, 0.05F));
     }
 
     @Override

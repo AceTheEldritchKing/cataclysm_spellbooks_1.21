@@ -15,10 +15,12 @@ import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
 import net.acetheeldritchking.cataclysm_spellbooks.items.armor.*;
+import net.acetheeldritchking.cataclysm_spellbooks.items.curios.LeviathansBlessingRing;
 import net.acetheeldritchking.cataclysm_spellbooks.items.spellbooks.CodexOfMaliceSpellBook;
 import net.acetheeldritchking.cataclysm_spellbooks.items.spellbooks.DesertSpellBook;
 import net.acetheeldritchking.cataclysm_spellbooks.items.staffs.CSStaffTiers;
 import net.acetheeldritchking.cataclysm_spellbooks.items.staffs.SpiritSundererStaff;
+import net.acetheeldritchking.cataclysm_spellbooks.items.weapons.MonstrousFlambergeItem;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ArmorItem;
@@ -90,6 +92,7 @@ public class ItemRegistries {
     /***
      * Weapons
      */
+    public static final DeferredHolder<Item, Item> MONSTROUS_FLAMBERGE = ITEMS.register("monstrous_flamberge", MonstrousFlambergeItem::new);
 
     /***
      * Generic Items
@@ -106,6 +109,7 @@ public class ItemRegistries {
     /***
      * Curios
      */
+    public static final Supplier<CurioBaseItem> LEVIATHANS_BLESSING = ITEMS.register("leviathans_blessing", LeviathansBlessingRing::new);
 
     /***
      * Armor
