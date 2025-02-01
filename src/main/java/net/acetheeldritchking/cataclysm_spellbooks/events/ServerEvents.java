@@ -309,7 +309,7 @@ public class ServerEvents {
         {
             if (!entity.level().isClientSide())
             {
-                //System.out.println("Potion Effect!");
+                System.out.println("Potion Effect!");
                 CSUtils.spawnHalberdWindmill(5, 5, 1.0F, 0.5F, 0.5F, 1, (LivingEntity) entity, entity.level(), 5, 1);
             }
         }

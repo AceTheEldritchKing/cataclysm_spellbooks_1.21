@@ -11,6 +11,9 @@ import net.acetheeldritchking.cataclysm_spellbooks.spells.evocation.PilferSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.fire.*;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.holy.ConjureKoboldiatorSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.holy.ConjureKoboletonSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.ice.ConjureThrallsSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.ice.CursedRushSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.ice.MalevolentBattlefieldSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -117,19 +120,19 @@ public class SpellRegistries {
 
     // ICE //
     // Malevolent Battlefield (Summon Maledictus' halberd field)
-    //public static final Supplier<AbstractSpell> MALEVOLENT_BATTLEFIELD = registerSpell(new MalevolentBattlefieldSpell());
+    public static final Supplier<AbstractSpell> MALEVOLENT_BATTLEFIELD = registerSpell(new MalevolentBattlefieldSpell());
 
     // Forgone Rage (Apply Wrath effect to the user. As the user attacks, it fills a rage meter. Each level is an additional 10% extra damage)
     // TEMPORARILY NOT AVAILABLE IN 1.21.1
     //public static final Supplier<AbstractSpell> FORGONE_RAGE = registerSpell(new ForgoneRageSpell());
 
     // Conjure Thrall (Summons the ice undead warriors)
-    //public static final Supplier<AbstractSpell> CONJURE_THRALL = registerSpell(new ConjureThrallsSpell());
+    public static final Supplier<AbstractSpell> CONJURE_THRALL = registerSpell(new ConjureThrallsSpell());
 
     // Arrow Spray (Release a barrage of icy arrows. Damage increases if the user is holding a bow/crossbow)
 
     // Cursed Rush (Mini boss rush attack + Soul Render charge)
-    //public static final Supplier<AbstractSpell> CURSED_RUSH = registerSpell(new CursedRushSpell());
+    public static final Supplier<AbstractSpell> CURSED_RUSH = registerSpell(new CursedRushSpell());
 
     // Phantom Blade (Mini boss blade attack)
 

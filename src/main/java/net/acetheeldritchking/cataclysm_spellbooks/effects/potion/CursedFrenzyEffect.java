@@ -1,5 +1,6 @@
 package net.acetheeldritchking.cataclysm_spellbooks.effects.potion;
 
+import com.github.L_Ender.cataclysm.client.particle.Options.RingParticleOptions;
 import com.github.L_Ender.cataclysm.client.particle.RingParticle;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.SpellRegistries;
@@ -26,7 +27,7 @@ public class CursedFrenzyEffect extends MobEffect {
             {
                 if (targets instanceof LivingEntity)
                 {
-                    //DamageSources.applyDamage(targets, pAmplifier, SpellRegistries.CURSED_RUSH.get().getDamageSource(pLivingEntity));
+                    DamageSources.applyDamage(targets, amplifier, SpellRegistries.CURSED_RUSH.get().getDamageSource(pLivingEntity));
                     targets.invulnerableTime = 20;
                 }
             }
@@ -49,13 +50,12 @@ public class CursedFrenzyEffect extends MobEffect {
                 float yaw = (float) Math.toRadians(-pLivingEntity.getYRot());
                 float yaw2 = (float) Math.toRadians(-pLivingEntity.getYRot() + 180);
                 float pitch = (float) Math.toRadians(-pLivingEntity.getXRot());
-                // Me when I'm lazy and I'll deal with it later
-                //pLivingEntity.level().addParticle(new RingParticle.RingData(yaw, pitch, 40, 0.337f, 0.925f, 0.8f, 1.0f, 50f, false, RingParticle.EnumRingBehavior.GROW_THEN_SHRINK), x, y, z, 0, 0, 0);
-                //pLivingEntity.level().addParticle(new RingParticle.RingData(yaw2, pitch, 40, 0.337f, 0.925f, 0.8f, 1.0f, 50f, false, RingParticle.EnumRingBehavior.GROW_THEN_SHRINK), x, y, z, 0, 0, 0);
+                pLivingEntity.level().addParticle(new RingParticleOptions(yaw, pitch, 40, 86, 236, 204, 1.0f, 50f, false, 2), x, y, z, 0, 0, 0);
+                pLivingEntity.level().addParticle(new RingParticleOptions(yaw2, pitch, 40, 86, 236, 204, 1.0f, 50f, false, 2), x, y, z, 0, 0, 0);
             }
         }
 
-        return applyEffectTick(pLivingEntity, amplifier);
+        return true;
     }
 
     @Override
