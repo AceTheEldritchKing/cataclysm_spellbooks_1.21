@@ -11,11 +11,14 @@ import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
+import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
 import net.acetheeldritchking.cataclysm_spellbooks.items.armor.*;
 import net.acetheeldritchking.cataclysm_spellbooks.items.spellbooks.CodexOfMaliceSpellBook;
 import net.acetheeldritchking.cataclysm_spellbooks.items.spellbooks.DesertSpellBook;
+import net.acetheeldritchking.cataclysm_spellbooks.items.staffs.CSStaffTiers;
+import net.acetheeldritchking.cataclysm_spellbooks.items.staffs.SpiritSundererStaff;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ArmorItem;
@@ -65,6 +68,24 @@ public class ItemRegistries {
     /***
      * Staffs and Gauntlets
      */
+    // Bloom Stone Staff
+    public static final DeferredHolder<Item, Item> BLOOM_STONE_STAFF = ITEMS.register("bloom_stone_staff", () ->
+        new StaffItem(ItemPropertiesHelper.equipment(1).attributes(ExtendedSwordItem.createAttributes(CSStaffTiers.BLOOM_STONE_STAFF))));
+
+    // Coral Staff
+    public static final DeferredHolder<Item, Item> CORAL_STAFF = ITEMS.register("coral_staff", () ->
+            new StaffItem(ItemPropertiesHelper.equipment(1).attributes(ExtendedSwordItem.createAttributes(CSStaffTiers.CORAL_STAFF))));
+
+    // Fake Wadjets Staff
+    public static final DeferredHolder<Item, Item> FAKE_WUDJETS_STAFF = ITEMS.register("fake_wudjets_staff", () ->
+            new StaffItem(ItemPropertiesHelper.equipment(1).attributes(ExtendedSwordItem.createAttributes(CSStaffTiers.FAKE_WUDJETS_STAFF))));
+
+    // Void Staff
+    public static final DeferredHolder<Item, Item> VOID_STAFF = ITEMS.register("void_staff", () ->
+            new StaffItem(ItemPropertiesHelper.equipment(1).attributes(ExtendedSwordItem.createAttributes(CSStaffTiers.VOID_STAFF))));
+
+    // Spirit Sunderer Staff
+    public static final DeferredHolder<Item, Item> SPIRIT_SUNDERER_STAFF = ITEMS.register("spirit_sunderer", SpiritSundererStaff::new);
 
     /***
      * Weapons
