@@ -194,7 +194,7 @@ dependencies {
     implementation "curse.maven:spell-collector-lib-1149858:5972600"
 
     // Cataclysm
-    implementation "curse.maven:lendercataclysm-551586:6116478"
+    implementation "curse.maven:lendercataclysm-551586:6143758"
 
     // Curios
     implementation "curse.maven:curios-309927:6076118"
