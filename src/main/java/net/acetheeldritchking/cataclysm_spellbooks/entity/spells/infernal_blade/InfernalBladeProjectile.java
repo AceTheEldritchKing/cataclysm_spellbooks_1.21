@@ -54,6 +54,13 @@ public class InfernalBladeProjectile extends AbstractMagicProjectile implements 
         }
     }
 
+    public void setRotation(float x, float y) {
+        this.setXRot(x);
+        this.xRotO = x;
+        this.setYRot(y);
+        this.yRotO = y;
+    }
+
     @Override
     public void tick() {
         Vec3 deltaMovement = getDeltaMovement();

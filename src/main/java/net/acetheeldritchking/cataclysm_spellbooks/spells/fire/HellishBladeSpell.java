@@ -12,6 +12,7 @@ import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
+import io.redspace.ironsspellbooks.entity.spells.EarthquakeAoe;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.spells.hellish_blade.HellishBladeProjectile;

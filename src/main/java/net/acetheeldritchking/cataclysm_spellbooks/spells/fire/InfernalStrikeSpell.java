@@ -80,8 +80,8 @@ public class InfernalStrikeSpell extends AbstractIgnisSpell {
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         InfernalBladeProjectile infernalBlade = new InfernalBladeProjectile(level, entity);
         infernalBlade.setPos(entity.position().add(0, entity.getEyeHeight() - infernalBlade.getBoundingBox().getYsize() * .5f, 0));
-        //infernalBlade.shootFromRotation(entity, entity.getXRot(), entity.getYHeadRot(), 0, 1, 1);
-        infernalBlade.shoot(entity.getLookAngle());
+        infernalBlade.shootFromRotation(entity, entity.getXRot(), entity.getYHeadRot(), 0, 1, 1);
+
         // Damage if Incinerator is in main hand
         Item incinerator = ModItems.THE_INCINERATOR.get();
 
@@ -95,6 +95,7 @@ public class InfernalStrikeSpell extends AbstractIgnisSpell {
         {
             infernalBlade.setDamage(damage);
         }
+
         level.addFreshEntity(infernalBlade);
         //System.out.println("Damage: " + infernalBlade.getDamage());
 

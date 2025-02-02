@@ -7,6 +7,7 @@ import com.github.L_Ender.cataclysm.init.ModSounds;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
+import io.redspace.ironsspellbooks.entity.spells.EarthquakeAoe;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.spells.blazing_aoe.BlazingAoE;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.CSEntityRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.SpellRegistries;
@@ -95,6 +96,18 @@ public class HellishBladeProjectile extends AbstractMagicProjectile implements G
     protected void onHit(HitResult hitresult) {
         super.onHit(hitresult);
         createAoEField(hitresult.getLocation());
+
+        // Petty earthquake that's just for visuals
+        EarthquakeAoe aoe = new EarthquakeAoe(this.level());
+        aoe.moveTo(this.position());
+        aoe.setOwner(this);
+        aoe.setCircular();
+        aoe.setRadius(10);
+        aoe.setDuration(20);
+        aoe.setDamage(0);
+        aoe.setSlownessAmplifier(0);
+
+        this.level().addFreshEntity(aoe);
 
         discard();
     }
