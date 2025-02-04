@@ -19,6 +19,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -31,6 +33,7 @@ public class CursiumMageElytraArmorItem extends ImbuableCSArmorItem {
     private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void createRenderer(Consumer<RenderProvider> consumer) {
         consumer.accept(new RenderProvider() {
             private CursiumMageElytraArmorRenderer renderer;
@@ -103,6 +106,7 @@ public class CursiumMageElytraArmorItem extends ImbuableCSArmorItem {
 
     // Animated armor based on conditions
     // Thank you Noah for showing me how to do this all those months back <3
+    @OnlyIn(Dist.CLIENT)
     private PlayState wings(AnimationState animationState)
     {
         Player player = Minecraft.getInstance().player;
