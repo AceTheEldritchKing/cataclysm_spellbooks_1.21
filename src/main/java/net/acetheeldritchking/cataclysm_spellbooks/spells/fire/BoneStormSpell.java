@@ -39,7 +39,7 @@ public class BoneStormSpell extends AbstractIgnisSpell {
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.UNCOMMON)
+            .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(5)
             .setCooldownSeconds(10)

@@ -17,7 +17,7 @@
         }
     },
     "result": {
-        "item": "cataclysm_spellbooks:bloom_stone_staff",
+        "id": "cataclysm_spellbooks:bloom_stone_staff",
         "count": 1
     }
 }

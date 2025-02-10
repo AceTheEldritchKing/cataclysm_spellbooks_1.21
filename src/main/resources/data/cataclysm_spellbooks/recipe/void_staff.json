@@ -7,6 +7,6 @@
         "item": "cataclysm:void_core"
     },
     "result": {
-        "item": "cataclysm_spellbooks:void_staff"
+        "id": "cataclysm_spellbooks:void_staff"
     }
 }

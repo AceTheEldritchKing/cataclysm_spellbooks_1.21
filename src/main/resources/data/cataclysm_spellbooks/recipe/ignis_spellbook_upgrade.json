@@ -7,6 +7,6 @@
         "item": "cataclysm:ignitium_ingot"
     },
     "result": {
-        "item": "cataclysm_spellbooks:ignis_spell_book"
+        "id": "cataclysm_spellbooks:ignis_spell_book"
     }
 }

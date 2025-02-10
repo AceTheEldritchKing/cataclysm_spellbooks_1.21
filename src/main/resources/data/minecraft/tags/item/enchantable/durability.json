@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:foot_armor",
+    "#minecraft:leg_armor",
+    "#minecraft:chest_armor",
+    "#minecraft:head_armor",
+    "#minecraft:swords",
+    "cataclysm_spellbooks:ignis_leggings",
+    "cataclysm_spellbooks:abyssal_warlock_leggings",
+    "cataclysm_spellbooks:cursium_mage_skirt",
+    "cataclysm_spellbooks:ignis_helmet",
+    "cataclysm_spellbooks:abyssal_warlock_helmet",
+    "cataclysm_spellbooks:abyssal_warlock_mask",
+    "cataclysm_spellbooks:cursium_mage_circlet",
+    "cataclysm_spellbooks:ignis_boots",
+    "cataclysm_spellbooks:abyssal_warlock_boots",
+    "cataclysm_spellbooks:cursium_mage_boots",
+    "cataclysm_spellbooks:ignis_chestplate",
+    "cataclysm_spellbooks:ignis_chestplate_elytra",
+    "cataclysm_spellbooks:abyssal_warlock_chestplate",
+    "cataclysm_spellbooks:cursium_mage_chestplate",
+    "cataclysm_spellbooks:cursium_mage_elytra"
+  ]
+}

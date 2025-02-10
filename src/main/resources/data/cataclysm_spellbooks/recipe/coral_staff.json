@@ -17,7 +17,7 @@
         }
     },
     "result": {
-        "item": "cataclysm_spellbooks:coral_staff",
+        "id": "cataclysm_spellbooks:coral_staff",
         "count": 1
     }
 }

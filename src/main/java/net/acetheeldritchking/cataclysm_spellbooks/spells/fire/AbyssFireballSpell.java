@@ -33,7 +33,7 @@ public class AbyssFireballSpell extends AbstractIgnisSpell {
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.UNCOMMON)
+            .setMinRarity(SpellRarity.RARE)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(8)
             .setCooldownSeconds(20)

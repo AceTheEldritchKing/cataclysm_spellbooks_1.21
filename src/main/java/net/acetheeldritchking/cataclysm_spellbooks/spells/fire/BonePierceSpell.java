@@ -37,7 +37,7 @@ public class BonePierceSpell extends AbstractIgnisSpell {
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.UNCOMMON)
+            .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(8)
             .setCooldownSeconds(20)

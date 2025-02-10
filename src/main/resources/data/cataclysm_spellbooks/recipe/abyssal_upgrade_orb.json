@@ -14,7 +14,7 @@
         }
     },
     "result": {
-        "item": "cataclysm_spellbooks:abyssal_upgrade_orb",
+        "id": "cataclysm_spellbooks:abyssal_upgrade_orb",
         "count": 1
     }
 }

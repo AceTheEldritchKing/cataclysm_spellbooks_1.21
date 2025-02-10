@@ -1,12 +1,12 @@
 {
     "type": "cataclysm:weapon_fusion",
     "base": {
-        "item": "cataclysm_spellbooks:cursium_mage_chestplate"
+        "item": "cataclysm_spellbooks:ignis_chestplate"
     },
     "addition": {
         "item": "minecraft:elytra"
     },
     "result": {
-        "item": "cataclysm_spellbooks:cursium_mage_elytra"
+        "id": "cataclysm_spellbooks:ignis_chestplate_elytra"
     }
 }

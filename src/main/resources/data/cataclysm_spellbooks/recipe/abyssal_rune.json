@@ -14,7 +14,7 @@
         }
     },
     "result": {
-        "item": "cataclysm_spellbooks:abyssal_rune",
+        "id": "cataclysm_spellbooks:abyssal_rune",
         "count": 1
     }
 }

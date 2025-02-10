@@ -46,7 +46,7 @@ public class HellishBladeSpell extends AbstractIgnisSpell {
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.EPIC)
+            .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(5)
             .setCooldownSeconds(60)
@@ -137,13 +137,13 @@ public class HellishBladeSpell extends AbstractIgnisSpell {
 
     private float getDamage(int spellLevel, LivingEntity caster)
     {
-        return getSpellPower(spellLevel, caster) * 5.0f;
+        return getSpellPower(spellLevel, caster) * 2.2f;
     }
 
     private float getBonusDamage(int spellLevel, LivingEntity caster)
     {
         float baseDamage = getDamage(spellLevel, caster);
-        int bonusAmount = (int) (3.5 + spellLevel);
+        int bonusAmount = (int) (1.5 + spellLevel);
 
         return baseDamage + bonusAmount;
     }

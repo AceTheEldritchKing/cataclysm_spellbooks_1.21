@@ -36,12 +36,12 @@ public class InfernalStrikeSpell extends AbstractIgnisSpell {
         return List.of(
                 Component.translatable("ui.irons_spellbooks.damage",
                 Utils.stringTruncation(getDamage(spellLevel, caster), 2)),
-                Component.translatable("ui.cataclsym_spellboks.incinerator_damage",
+                Component.translatable("ui.cataclysm_spellbooks.incinerator_damage",
                         Utils.stringTruncation(getBonusDamage(spellLevel, caster), 2)));
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.RARE)
+            .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(8)
             .setCooldownSeconds(1)
@@ -50,10 +50,10 @@ public class InfernalStrikeSpell extends AbstractIgnisSpell {
     public InfernalStrikeSpell()
     {
         this.manaCostPerLevel = 2;
-        this.baseSpellPower = 5;
+        this.baseSpellPower = 2;
         this.spellPowerPerLevel = 2;
         this.castTime = 0;
-        this.baseManaCost = 15;
+        this.baseManaCost = 85;
     }
 
     @Override
@@ -109,7 +109,7 @@ public class InfernalStrikeSpell extends AbstractIgnisSpell {
 
     private float getDamage(int spellLevel, LivingEntity caster)
     {
-        return getSpellPower(spellLevel, caster) * 2.0f;
+        return getSpellPower(spellLevel, caster) * 1.5f;
     }
 
     private float getBonusDamage(int spellLevel, LivingEntity caster)

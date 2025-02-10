@@ -37,7 +37,7 @@ public class ConjureIgnitedReinforcement extends AbstractIgnisSpell {
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.RARE)
+            .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(3)
             .setCooldownSeconds(100)

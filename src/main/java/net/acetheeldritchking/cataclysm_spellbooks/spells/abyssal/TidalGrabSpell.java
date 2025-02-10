@@ -115,7 +115,7 @@ public class TidalGrabSpell extends AbstractAbyssalSpell {
                     }
                     else
                     {
-                        Iterator<LivingEntity> iterator = level.getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate(16.0D)).iterator();
+                        Iterator<LivingEntity> iterator = level.getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate(10.0D)).iterator();
 
                         //System.out.println("Beginning of loop");
                         while (true)
@@ -184,6 +184,6 @@ public class TidalGrabSpell extends AbstractAbyssalSpell {
 
     private float getRange(int spellLevel, LivingEntity caster)
     {
-        return getSpellPower(spellLevel, caster) * (5 * spellLevel);
+        return getSpellPower(spellLevel, caster) * (2 * spellLevel);
     }
 }
