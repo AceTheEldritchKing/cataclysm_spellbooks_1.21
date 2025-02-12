@@ -340,15 +340,14 @@ public class ServerEvents {
         // Cursium Chestplate
         if (entity instanceof LivingEntity livingEntity)
         {
-            if (!livingEntity.level().isClientSide())
+            if
+            (
+                !livingEntity.level().isClientSide &&
+                !damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
+                CSUtils.tryCurisumChestplateRebirth(livingEntity)
+            )
             {
-                if (!damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
-                {
-                    if (CSUtils.tryCurisumChestplateRebirth(livingEntity))
-                    {
-                        event.setCanceled(true);
-                    }
-                }
+                event.setCanceled(true);
             }
         }
     }

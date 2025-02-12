@@ -131,7 +131,7 @@ public class TectonicTrembleSpell extends AbstractSpell {
         aoe.setSlownessAmplifier(0);
 
         level.addFreshEntity(aoe);
-        CSUtils.spawnFlameJetWindmill(5, 5, 1, 1.25D, 0, 1, entity, level, 1);
+        CSUtils.spawnFlameJetWindmill(5, 3, 1, 1.25D, 0, 1, entity, level, 1);
         MagicManager.spawnParticles(level, new BlastwaveParticleOptions(SchoolRegistry.FIRE.get().getTargetingColor(), getRange(spellLevel, entity)), entity.getX(), entity.getY() + 0.5F, entity.getZ(), 1, 0, 0, 0, 0, true);
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
