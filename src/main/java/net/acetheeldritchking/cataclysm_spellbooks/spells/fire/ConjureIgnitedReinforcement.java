@@ -40,16 +40,16 @@ public class ConjureIgnitedReinforcement extends AbstractIgnisSpell {
             .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(3)
-            .setCooldownSeconds(100)
+            .setCooldownSeconds(150)
             .build();
 
     public ConjureIgnitedReinforcement()
     {
-        this.manaCostPerLevel = 15;
+        this.manaCostPerLevel = 20;
         this.baseSpellPower = 10;
         this.spellPowerPerLevel = 5;
         this.castTime = 80;
-        this.baseManaCost = 50;
+        this.baseManaCost = 150;
     }
 
     @Override

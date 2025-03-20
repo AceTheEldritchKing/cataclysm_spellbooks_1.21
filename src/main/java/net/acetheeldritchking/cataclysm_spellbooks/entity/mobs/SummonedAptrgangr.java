@@ -14,11 +14,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
@@ -104,7 +107,7 @@ public class SummonedAptrgangr extends Aptrgangr_Entity implements IMagicSummon 
         {
             return true;
         }
-        else if (entityIn == getSummoner())
+        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
         {
             return true;
         }
@@ -116,6 +119,17 @@ public class SummonedAptrgangr extends Aptrgangr_Entity implements IMagicSummon 
         {
             return this.getTeam() == null && entityIn.getTeam() == null;
         }
+    }
+
+    public static AttributeSupplier.Builder buildAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.FOLLOW_RANGE, 30.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.28F)
+                .add(Attributes.ATTACK_DAMAGE, 12)
+                .add(Attributes.MAX_HEALTH, 110)
+                .add(Attributes.ARMOR, 5)
+                .add(Attributes.STEP_HEIGHT, 1.25f)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0);
     }
 
     // NBT

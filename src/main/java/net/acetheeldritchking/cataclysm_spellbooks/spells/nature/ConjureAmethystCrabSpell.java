@@ -1,4 +1,4 @@
-package net.acetheeldritchking.cataclysm_spellbooks.spells.holy;
+package net.acetheeldritchking.cataclysm_spellbooks.spells.nature;
 
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.events.SpellSummonEvent;
@@ -6,44 +6,42 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
-import net.acetheeldritchking.cataclysm_spellbooks.entity.mobs.SummonedKoboldiator;
+import net.acetheeldritchking.cataclysm_spellbooks.entity.mobs.SummonedAmethystCrab;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.CSPotionEffectRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
 
 import java.util.List;
 
 @AutoSpellConfig
-public class ConjureKoboldiatorSpell extends AbstractSpell {
-    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "conjure_koboldiator");
+public class ConjureAmethystCrabSpell extends AbstractSpell {
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "conjure_amethyst_crab");
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.cataclysm_spellbooks.koboldiator_count", spellLevel));
+        return List.of(Component.translatable("ui.cataclysm_spellbooks.crab_count", spellLevel));
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.LEGENDARY)
-            .setSchoolResource(SchoolRegistry.HOLY_RESOURCE)
+            .setSchoolResource(SchoolRegistry.NATURE_RESOURCE)
             .setMaxLevel(1)
             .setCooldownSeconds(200)
             .build();
 
-    public ConjureKoboldiatorSpell()
+    public ConjureAmethystCrabSpell()
     {
         this.manaCostPerLevel = 20;
         this.baseSpellPower = 10;
         this.spellPowerPerLevel = 5;
         this.castTime = 80;
-        this.baseManaCost = 250;
+        this.baseManaCost = 200;
     }
 
     @Override
@@ -72,30 +70,28 @@ public class ConjureKoboldiatorSpell extends AbstractSpell {
             double randomNearbyX = vec.x + entity.getRandom().nextGaussian() * 3;
             double randomNearbyZ = vec.z + entity.getRandom().nextGaussian() * 3;
 
-            spawnKoboldiator(randomNearbyX, vec.y, randomNearbyZ, entity, level, summonTimer, spellLevel);
+            spawnCrab(randomNearbyX, vec.y, randomNearbyZ, entity, level, summonTimer, spellLevel);
         }
 
-        MobEffectInstance effect = new MobEffectInstance(CSPotionEffectRegistry.KOBOLDIATOR_TIMER,
+        MobEffectInstance effect = new MobEffectInstance(CSPotionEffectRegistry.CRAB_TIMER,
                 summonTimer, 0, false, false, false);
         entity.addEffect(effect);
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
-    private void spawnKoboldiator(double x, double y, double z, LivingEntity caster, Level level, int summonTimer, int spellLevel)
+    private void spawnCrab(double x, double y, double z, LivingEntity caster, Level level, int summonTimer, int spellLevel)
     {
-        MobEffectInstance effect = new MobEffectInstance(CSPotionEffectRegistry.KOBOLDIATOR_TIMER,
+        MobEffectInstance effect = new MobEffectInstance(CSPotionEffectRegistry.CRAB_TIMER,
                 summonTimer, 0, false, false, false);
 
-        SummonedKoboldiator kobolediator = new SummonedKoboldiator(level, caster);
+        SummonedAmethystCrab amethystCrab = new SummonedAmethystCrab(level, caster);
 
-        var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, kobolediator, this.spellId, spellLevel));
+        var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, amethystCrab, this.spellId, spellLevel));
 
-        kobolediator.moveTo(x, y, z);
+        amethystCrab.moveTo(x, y, z);
 
-        kobolediator.setSleep(false);
-
-        kobolediator.addEffect(effect);
+        amethystCrab.addEffect(effect);
 
         level.addFreshEntity(event.getCreature());
     }

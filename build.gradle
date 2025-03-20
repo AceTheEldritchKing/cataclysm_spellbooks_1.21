@@ -138,7 +138,7 @@ repositories {
 dependencies {
     // ISS ***************************************************************************************************
     //implementation "io.redspace:irons_spellbooks:1.21-3.9.1"
-    implementation "curse.maven:irons-spells-n-spellbooks-855414:6282642"
+    implementation "curse.maven:irons-spells-n-spellbooks-855414:6312581"
 
     // GECKOLIB ***************************************************************************************************
     //implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
@@ -194,7 +194,7 @@ dependencies {
     implementation "curse.maven:spell-collector-lib-1149858:6174572"
 
     // Cataclysm
-    implementation "curse.maven:lendercataclysm-551586:6269930"
+    implementation "curse.maven:lendercataclysm-551586:6318750"
 
     // Lionfish
     implementation "curse.maven:lionfish-api-1001614:6168249"

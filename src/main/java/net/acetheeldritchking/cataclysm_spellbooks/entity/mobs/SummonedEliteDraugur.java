@@ -104,7 +104,7 @@ public class SummonedEliteDraugur extends Elite_Draugr_Entity implements IMagicS
         {
             return true;
         }
-        else if (entityIn == getSummoner())
+        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
         {
             return true;
         }

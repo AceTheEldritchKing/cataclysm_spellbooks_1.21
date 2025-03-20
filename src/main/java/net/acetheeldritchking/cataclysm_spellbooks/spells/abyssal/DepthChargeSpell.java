@@ -68,7 +68,7 @@ public class DepthChargeSpell extends AbstractAbyssalSpell {
         double radiusZ = casterZ + spellLevel;
 
         float f = (float) Mth.atan2(radiusZ - casterZ, radiusX - casterX);
-        for (int l = 0; l < 35; ++l)
+        for (int l = 0; l < 15; ++l)
         {
             int j = (int) (2.0F * l);
             for (int i = 0; i < amountForMines(spellLevel, entity); i++)

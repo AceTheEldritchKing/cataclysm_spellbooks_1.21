@@ -43,6 +43,9 @@ public class CSPotionEffectRegistry {
     public static final DeferredHolder<MobEffect, SummonTimer> DRAUGUR_TIMER =
             MOB_EFFECTS.register("draugur_timer", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 4583645));
 
+    public static final DeferredHolder<MobEffect, SummonTimer> CRAB_TIMER =
+            MOB_EFFECTS.register("crab_timer", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 0xfa87fa));
+
     public static void register(IEventBus eventBus)
     {
         MOB_EFFECTS.register(eventBus);

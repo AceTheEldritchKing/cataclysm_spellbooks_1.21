@@ -116,11 +116,10 @@ public class SummonedKoboleton extends Koboleton_Entity implements IMagicSummon 
         {
             return true;
         }
-        else if (entityIn == getSummoner())
+        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
         {
             return true;
         }
-        // He gained 50 braincells!
         else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner().getTeam()))
         {
             return false;

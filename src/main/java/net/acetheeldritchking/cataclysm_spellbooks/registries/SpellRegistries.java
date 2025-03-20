@@ -14,10 +14,7 @@ import net.acetheeldritchking.cataclysm_spellbooks.spells.holy.ConjureKoboletonS
 import net.acetheeldritchking.cataclysm_spellbooks.spells.ice.ConjureThrallsSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.ice.CursedRushSpell;
 import net.acetheeldritchking.cataclysm_spellbooks.spells.ice.MalevolentBattlefieldSpell;
-import net.acetheeldritchking.cataclysm_spellbooks.spells.nature.AmethystPunctureSpell;
-import net.acetheeldritchking.cataclysm_spellbooks.spells.nature.DesertWindsSpell;
-import net.acetheeldritchking.cataclysm_spellbooks.spells.nature.MonolithCrashSpell;
-import net.acetheeldritchking.cataclysm_spellbooks.spells.nature.SandstormSpell;
+import net.acetheeldritchking.cataclysm_spellbooks.spells.nature.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -163,6 +160,9 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> AMETHYST_PUNCTURE = registerSpell(new AmethystPunctureSpell());
 
     // Summon Ancient Remnant (April Fools spell)
+
+    // Summon Amethyst Crab
+    public static final Supplier<AbstractSpell> CONJURE_AMETHYST_CRAB = registerSpell(new ConjureAmethystCrabSpell());
 
 
     // TECHNOMANCY //

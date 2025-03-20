@@ -40,16 +40,16 @@ public class BonePierceSpell extends AbstractIgnisSpell {
             .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(8)
-            .setCooldownSeconds(20)
+            .setCooldownSeconds(50)
             .build();
 
     public BonePierceSpell()
     {
-        this.manaCostPerLevel = 5;
+        this.manaCostPerLevel = 10;
         this.baseSpellPower = 1;
         this.spellPowerPerLevel = 1;
         this.castTime = 0;
-        this.baseManaCost = 50;
+        this.baseManaCost = 80;
     }
 
     @Override

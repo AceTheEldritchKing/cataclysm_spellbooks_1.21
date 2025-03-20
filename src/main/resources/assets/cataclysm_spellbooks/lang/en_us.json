@@ -14,6 +14,16 @@
     "effect.cataclysm_spellbooks.abyssal_gnawer_timer.description": "The amount of time an Abyssal Gnawer remains in the world.",
     "effect.cataclysm_spellbooks.wrathful_effect": "Wrathful",
     "effect.cataclysm_spellbooks.wrathful_effect.description": "The player is filled with wrath that increases their damage per hit.",
+    "effect.cataclysm_spellbooks.ignited_timer": "Conjured Ignited Reinforcements",
+    "effect.cataclysm_spellbooks.ignited_timer.description": "The amount of time an Ignited ally remains in the world.",
+    "effect.cataclysm_spellbooks.koboldiator_timer": "Conjured Koboldiator",
+    "effect.cataclysm_spellbooks.koboldiator_timer.description": "The amount of time an summoned Koboldiator remains in the world.",
+    "effect.cataclysm_spellbooks.koboleton_timer": "Conjured Koboleton",
+    "effect.cataclysm_spellbooks.koboleton_timer.description": "The amount of time an summoned Koboleton remains in the world.",
+    "effect.cataclysm_spellbooks.draugur_timer": "Conjured Dragur Army",
+    "effect.cataclysm_spellbooks.draugur_timer.description": "The amount of time an the draugur army remains in the world.",
+    "effect.cataclysm_spellbooks.crab_timer": "Conjured Amethyst Crab",
+    "effect.cataclysm_spellbooks.crab_timer.description": "The amount of time an summoned Amethyst Crab remains in the world.",
 
 
     "school.cataclysm_spellbooks.abyssal": "Abyssal",
@@ -155,6 +165,9 @@
     "spell.cataclysm_spellbooks.tectonic_tremble": "Tectonic Tremble",
     "spell.cataclysm_spellbooks.tectonic_tremble.guide": "Shake the earth, igniting nearby entites and knocking them back",
 
+    "spell.cataclysm_spellbooks.conjure_amethyst_crab": "Conjure: Amethyst Crab",
+    "spell.cataclysm_spellbooks.conjure_amethyst_crab.guide": "Conjure the mythical Amethyst Crab to fight by your side",
+
 
     "ui.cataclysm_spellbooks.void_beam": "Summon an abyssal beam similar to the Deepling warlocks",
     "ui.cataclysm_spellbooks.void_rune": "Summon an void rune at your target's location",
@@ -188,6 +201,7 @@
     "ui.cataclysm_spellbooks.thrall_count": "%d Summons",
     "ui.cataclysm_spellbooks.halberd_rush": "Spawns halberds at starting location and occasionally at end location",
     "ui.cataclysm_spellbooks.maledictus_armory_bonus": "Deals %d if Soul Render or Annihilator is held in the main hand",
+    "ui.cataclysm_spellbooks.crab_count": "%d Summons",
 
 
     "entity.cataclysm_spellbooks.abyssal_gnawers": "Abyssal Gnawer",
@@ -202,6 +216,7 @@
     "entity.cataclysm_spellbooks.summoned_royal_draugur": "Royal Draugur",
     "entity.cataclysm_spellbooks.summoned_elite_draugur": "Elite Draugur",
     "entity.cataclysm_spellbooks.summoned_aptrgangr": "Aptrgangr",
+    "entity.cataclysm_spellbooks.summoned_amethyst_crab": "Amethyst Crab",
 
 
 
@@ -211,6 +226,13 @@
     "death.attack.cataclysm_spellbooks.infernal_strike": "%1$s was pierced by %2$s's infernal blade",
     "death.attack.cataclysm_spellbooks.summoned_ignited_revenant": "%1$s was bashed in by %2$s's ignited revenants",
     "death.attack.cataclysm_spellbooks.summoned_ignited_berserker": "%1$s was cleaved by %2$s's ignited berserkers",
+    "death.attack.cataclysm_spellbooks.summoned_koboldiator": "%1$s was crushed by %2$s's Koboldiator",
+    "death.attack.cataclysm_spellbooks.summoned_koboleton": "%1$s was hacked to death by %2$s's Koboldeton",
+    "death.attack.cataclysm_spellbooks.summoned_draugur": "%1$s was swarmed by %2$s's dragur",
+    "death.attack.cataclysm_spellbooks.summoned_royal_draugur": "%1$s was swarmed by %2$s's dragur",
+    "death.attack.cataclysm_spellbooks.summoned_elite_draugur": "%1$s was swarmed by %2$s's dragur",
+    "death.attack.cataclysm_spellbooks.summoned_aptrgangr": "%1$s was chopped in half %2$s's Aptrgangr",
+    "death.attack.cataclysm_spellbooks.summoned_amethyst_crab": "%1$s was crunched between %2$s's Amethyst Crab's claws",
 
     "death.attack.blazing_aoe.item": "%1$s was immolated in %2$s's blazing field while using %3$s",
 

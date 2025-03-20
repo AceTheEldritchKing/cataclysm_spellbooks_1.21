@@ -36,16 +36,16 @@ public class AshenBreathSpell extends AbstractIgnisSpell {
             .setMinRarity(SpellRarity.RARE)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(5)
-            .setCooldownSeconds(12)
+            .setCooldownSeconds(30)
             .build();
 
     public AshenBreathSpell()
     {
-        this.manaCostPerLevel = 5;
+        this.manaCostPerLevel = 10;
         this.baseSpellPower = 1;
         this.spellPowerPerLevel = 2;
         this.castTime = 100;
-        this.baseManaCost = 10;
+        this.baseManaCost = 15;
     }
 
     @Override

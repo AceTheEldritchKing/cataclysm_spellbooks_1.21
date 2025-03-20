@@ -24,6 +24,7 @@ public class ClientSetup {
         event.registerEntityRenderer(CSEntityRegistry.SUMMONED_ROYAL_DRAUGUR.get(), Royal_Draugr_Renderer::new);
         event.registerEntityRenderer(CSEntityRegistry.SUMMONED_ELITE_DRAUGUR.get(), Elite_Draugr_Renderer::new);
         event.registerEntityRenderer(CSEntityRegistry.SUMMONED_APTRGANGR.get(), Aptrgangr_Renderer::new);
+        event.registerEntityRenderer(CSEntityRegistry.SUMMONED_AMETHYST_CRAB.get(), Amethyst_Crab_Renderer::new);
         event.registerEntityRenderer(CSEntityRegistry.INFERNAL_BLADE_PROJECTILE.get(), InfernalBladeRenderer::new);
         event.registerEntityRenderer(CSEntityRegistry.HELLISH_BLADE_PROJECTILE.get(), HellishBladeRenderer::new);
         event.registerEntityRenderer(CSEntityRegistry.BLAZING_AOE_ENTITY.get(), NoopRenderer::new);

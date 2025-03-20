@@ -13,7 +13,7 @@
             "item": "cataclysm:lionfish_spike"
         },
         "a": {
-            "tag": "forge:gems/amethyst"
+            "item": "minecraft:amethyst_shard"
         }
     },
     "result": {

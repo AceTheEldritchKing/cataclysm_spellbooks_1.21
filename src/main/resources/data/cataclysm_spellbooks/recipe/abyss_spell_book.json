@@ -1,10 +1,12 @@
 {
-    "type": "cataclysm:amethyst_bless",
-    "ingredients": {
+    "type": "cataclysm:weapon_fusion",
+    "base": {
         "item": "irons_spellbooks:ruined_book"
     },
-    "result": {
-        "item": "cataclysm_spellbooks:abyss_spell_book"
+    "addition": {
+        "item": "cataclysm:crystallized_coral"
     },
-    "time": 250
+    "result": {
+        "id": "cataclysm_spellbooks:abyss_spell_book"
+    }
 }

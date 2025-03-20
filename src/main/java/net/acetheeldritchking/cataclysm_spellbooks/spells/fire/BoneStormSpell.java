@@ -42,16 +42,16 @@ public class BoneStormSpell extends AbstractIgnisSpell {
             .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(5)
-            .setCooldownSeconds(10)
+            .setCooldownSeconds(80)
             .build();
 
     public BoneStormSpell()
     {
-        this.manaCostPerLevel = 5;
+        this.manaCostPerLevel = 10;
         this.baseSpellPower = 0;
         this.spellPowerPerLevel = 1;
         this.castTime = 100;
-        this.baseManaCost = 10;
+        this.baseManaCost = 15;
     }
 
     @Override

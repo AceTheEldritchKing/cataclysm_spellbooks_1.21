@@ -123,6 +123,15 @@ public class CSEntityRegistry {
                             ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "summoned_aptrgangr").toString()
                     ));
 
+    // Summoned Amethyst Crab
+    public static final DeferredHolder<EntityType<?>, EntityType<SummonedAmethystCrab>> SUMMONED_AMETHYST_CRAB =
+            ENTITIES.register("summoned_amethyst_crab", () -> EntityType.Builder.<SummonedAmethystCrab>of
+                            (SummonedAmethystCrab::new, MobCategory.MONSTER).
+                    sized(3f, 2.5f)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "summoned_amethyst_crab").toString()
+                    ));
+
     public static void register(IEventBus eventBus)
     {
         ENTITIES.register(eventBus);

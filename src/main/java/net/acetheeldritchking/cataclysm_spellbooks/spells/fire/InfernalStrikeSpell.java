@@ -17,7 +17,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -44,16 +43,16 @@ public class InfernalStrikeSpell extends AbstractIgnisSpell {
             .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(8)
-            .setCooldownSeconds(1)
+            .setCooldownSeconds(20)
             .build();
 
     public InfernalStrikeSpell()
     {
-        this.manaCostPerLevel = 2;
+        this.manaCostPerLevel = 10;
         this.baseSpellPower = 2;
         this.spellPowerPerLevel = 2;
         this.castTime = 0;
-        this.baseManaCost = 85;
+        this.baseManaCost = 110;
     }
 
     @Override

@@ -98,13 +98,14 @@ public class HellishBladeProjectile extends AbstractMagicProjectile implements G
         createAoEField(hitresult.getLocation());
 
         // Petty earthquake that's just for visuals
+        // Actually I'm giving it a tiny bit of damage
         EarthquakeAoe aoe = new EarthquakeAoe(this.level());
         aoe.moveTo(this.position());
         aoe.setOwner(this);
         aoe.setCircular();
         aoe.setRadius(10);
         aoe.setDuration(20);
-        aoe.setDamage(0);
+        aoe.setDamage(1.0F);
         aoe.setSlownessAmplifier(0);
 
         this.level().addFreshEntity(aoe);
@@ -119,8 +120,8 @@ public class HellishBladeProjectile extends AbstractMagicProjectile implements G
             BlazingAoE aoE = new BlazingAoE(level());
             aoE.setOwner(getOwner());
             aoE.setDuration(100);
-            aoE.setDamage(0.5F);
-            aoE.setRadius(3.0F);
+            aoE.setDamage(1.5F);
+            aoE.setRadius(4.5F);
             aoE.setCircular();
             aoE.moveTo(location);
             level().addFreshEntity(aoE);

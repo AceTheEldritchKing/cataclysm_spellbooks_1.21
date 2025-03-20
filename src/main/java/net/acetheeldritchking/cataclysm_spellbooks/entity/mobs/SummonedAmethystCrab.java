@@ -1,6 +1,6 @@
 package net.acetheeldritchking.cataclysm_spellbooks.entity.mobs;
 
-import com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.Kobolediator_Entity;
+import com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Amethyst_Crab_Entity;
 import com.github.L_Ender.cataclysm.init.ModParticle;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
@@ -8,8 +8,10 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.CSEntityRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.CSPotionEffectRegistry;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -32,17 +34,17 @@ import net.minecraft.world.phys.Vec3;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSummon {
+public class SummonedAmethystCrab extends Amethyst_Crab_Entity implements IMagicSummon {
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
 
-    public SummonedKoboldiator(EntityType entity, Level world) {
+    public SummonedAmethystCrab(EntityType entity, Level world) {
         super(entity, world);
         xpReward = 0;
     }
 
-    public SummonedKoboldiator(Level level, LivingEntity owner) {
-        this(CSEntityRegistry.SUMMONED_KOBOLDIATOR.get(), level);
+    public SummonedAmethystCrab(Level level, LivingEntity owner) {
+        this(CSEntityRegistry.SUMMONED_AMETHYST_CRAB.get(), level);
         setSummoner(owner);
     }
 
@@ -87,7 +89,7 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
 
     @Override
     public void onRemovedFromLevel() {
-        this.onRemovedHelper(this, CSPotionEffectRegistry.KOBOLDIATOR_TIMER);
+        this.onRemovedHelper(this, CSPotionEffectRegistry.CRAB_TIMER);
         super.onRemovedFromLevel();
     }
 
@@ -95,7 +97,7 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
     public void onUnSummon() {
         if (!level().isClientSide)
         {
-            MagicManager.spawnParticles(level(), ModParticle.SANDSTORM.get(),
+            MagicManager.spawnParticles(level(), ParticleTypes.ENCHANT,
                     getX(), getY(), getZ(),
                     25,
                     level().random.nextGaussian() * 0.007D,
@@ -112,7 +114,7 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
         {
             return true;
         }
-        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
+        else if (entityIn == getSummoner())
         {
             return true;
         }
@@ -128,12 +130,12 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
 
     public static AttributeSupplier.Builder buildAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.FOLLOW_RANGE, 30.0D)
+                .add(Attributes.FOLLOW_RANGE, 20.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.28F)
-                .add(Attributes.ATTACK_DAMAGE, 10)
-                .add(Attributes.MAX_HEALTH, 120)
+                .add(Attributes.ATTACK_DAMAGE, 9)
+                .add(Attributes.MAX_HEALTH, 130)
                 .add(Attributes.ARMOR, 5)
-                .add(Attributes.STEP_HEIGHT, 1.25F)
+                .add(Attributes.STEP_HEIGHT, 1.5F)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0);
     }
 

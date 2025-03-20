@@ -41,7 +41,7 @@ public class IncinerationSpell extends AbstractIgnisSpell {
             .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(5)
-            .setCooldownSeconds(10)
+            .setCooldownSeconds(40)
             .build();
 
     public IncinerationSpell()
@@ -49,8 +49,8 @@ public class IncinerationSpell extends AbstractIgnisSpell {
         this.manaCostPerLevel = 10;
         this.baseSpellPower = 10;
         this.spellPowerPerLevel = 5;
-        this.castTime = 60;
-        this.baseManaCost = 100;
+        this.castTime = 30;
+        this.baseManaCost = 120;
     }
 
     @Override

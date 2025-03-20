@@ -105,7 +105,7 @@ public class SummonedDraugur extends Draugr_Entity implements IMagicSummon {
         {
             return true;
         }
-        else if (entityIn == getSummoner())
+        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
         {
             return true;
         }

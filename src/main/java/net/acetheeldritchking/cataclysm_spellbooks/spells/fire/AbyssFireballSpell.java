@@ -36,16 +36,16 @@ public class AbyssFireballSpell extends AbstractIgnisSpell {
             .setMinRarity(SpellRarity.RARE)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
             .setMaxLevel(8)
-            .setCooldownSeconds(20)
+            .setCooldownSeconds(50)
             .build();
 
     public AbyssFireballSpell()
     {
-        this.manaCostPerLevel = 10;
+        this.manaCostPerLevel = 15;
         this.baseSpellPower = 1;
         this.spellPowerPerLevel = 1;
         this.castTime = 0;
-        this.baseManaCost = 100;
+        this.baseManaCost = 130;
     }
 
     @Override
