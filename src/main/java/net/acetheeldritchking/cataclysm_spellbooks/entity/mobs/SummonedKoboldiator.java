@@ -79,6 +79,10 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
     }
 
     // Attacks and Death
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        return this.shouldIgnoreDamage(pSource) ? false : super.hurt(pSource, pAmount);
+    }
+
     @Override
     public void die(DamageSource pDamageSource) {
         this.onDeathHelper();
@@ -116,7 +120,7 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
         {
             return true;
         }
-        else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner().getTeam()))
+        else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner()))
         {
             return false;
         }

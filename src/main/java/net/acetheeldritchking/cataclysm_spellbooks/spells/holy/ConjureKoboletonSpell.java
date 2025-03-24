@@ -90,6 +90,10 @@ public class ConjureKoboletonSpell extends AbstractSpell {
 
         var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, koboleton, this.spellId, spellLevel));
 
+        koboleton.finalizeSpawn((ServerLevelAccessor) level,
+                level.getCurrentDifficultyAt(koboleton.getOnPos()),
+                MobSpawnType.MOB_SUMMONED, null);
+
         koboleton.moveTo(x, y, z);
 
         koboleton.addEffect(effect);

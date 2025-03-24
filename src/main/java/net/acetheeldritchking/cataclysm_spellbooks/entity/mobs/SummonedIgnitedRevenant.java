@@ -75,6 +75,10 @@ public class SummonedIgnitedRevenant extends Ignited_Revenant_Entity implements 
     }
 
     // Attacks and Death
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        return this.shouldIgnoreDamage(pSource) ? false : super.hurt(pSource, pAmount);
+    }
+
     @Override
     public void die(DamageSource pDamageSource) {
         this.onDeathHelper();
@@ -112,7 +116,7 @@ public class SummonedIgnitedRevenant extends Ignited_Revenant_Entity implements 
         {
             return true;
         }
-        else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner().getTeam()))
+        else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner()))
         {
             return false;
         }

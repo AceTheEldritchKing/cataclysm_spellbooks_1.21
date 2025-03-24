@@ -58,17 +58,6 @@ public class SummonedKoboleton extends Koboleton_Entity implements IMagicSummon 
     }
 
     @Override
-    public boolean hurt(DamageSource source, float damage) {
-        Entity entity = source.getDirectEntity();
-        if (entity instanceof SummonedKoboldiator)
-        {
-            return false;
-        }
-
-        return super.hurt(source, damage);
-    }
-
-    @Override
     public LivingEntity getSummoner() {
         return OwnerHelper.getAndCacheOwner(level(), cachedSummoner, summonerUUID);
     }
@@ -83,6 +72,10 @@ public class SummonedKoboleton extends Koboleton_Entity implements IMagicSummon 
     }
 
     // Attacks and Death
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        return this.shouldIgnoreDamage(pSource) ? false : super.hurt(pSource, pAmount);
+    }
+
     @Override
     public void die(DamageSource pDamageSource) {
         this.onDeathHelper();
@@ -120,7 +113,7 @@ public class SummonedKoboleton extends Koboleton_Entity implements IMagicSummon 
         {
             return true;
         }
-        else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner().getTeam()))
+        else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner()))
         {
             return false;
         }

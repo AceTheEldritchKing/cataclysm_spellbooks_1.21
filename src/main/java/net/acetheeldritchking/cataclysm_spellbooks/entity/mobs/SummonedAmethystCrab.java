@@ -81,6 +81,10 @@ public class SummonedAmethystCrab extends Amethyst_Crab_Entity implements IMagic
     }
 
     // Attacks and Death
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        return this.shouldIgnoreDamage(pSource) ? false : super.hurt(pSource, pAmount);
+    }
+
     @Override
     public void die(DamageSource pDamageSource) {
         this.onDeathHelper();
@@ -118,7 +122,7 @@ public class SummonedAmethystCrab extends Amethyst_Crab_Entity implements IMagic
         {
             return true;
         }
-        else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner().getTeam()))
+        else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner()))
         {
             return false;
         }

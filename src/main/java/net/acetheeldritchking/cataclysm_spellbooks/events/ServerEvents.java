@@ -43,15 +43,19 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 public class ServerEvents {
 
     @SubscribeEvent
-    public static void onLivingDamageEvent(LivingDamageEvent.Pre event)
+    public static void onLivingPreDamageEvent(LivingDamageEvent.Pre event)
     {
-        Entity entity = event.getEntity();
+        Entity entity = event.getSource().getEntity();
+
+        //System.out.println("Event?");
 
         if (entity instanceof LivingEntity attacker)
         {
             // ABYSSAL PREDATOR
             if (attacker.hasEffect(CSPotionEffectRegistry.ABYSSAL_PREDATOR_EFFECT))
             {
+
+                //System.out.println("Has effect?");
                 int effectLevel = attacker.getEffect(CSPotionEffectRegistry.ABYSSAL_PREDATOR_EFFECT).getAmplifier() + 1;
                 float baseAmount = event.getOriginalDamage();
                 float damageBonusPerLevel = AbyssalPredatorPotionEffect.ATTACK_DAMAGE_BONUS_PER_LEVEL * effectLevel;
@@ -61,7 +65,12 @@ public class ServerEvents {
                 // Now do the bonus when underwater
                 if (attacker.isInWaterOrRain())
                 {
-                    //System.out.println("I'm doing damage guys: " + totalDamage);
+                    //System.out.println("In water?");
+
+                    //System.out.println("Base: " + baseAmount);
+                    //System.out.println("bonus per level: " + damageBonusPerLevel);
+                    //System.out.println("bonus damage: " + bonusDamage);
+                    //System.out.println("Total: " + totalDamage);
                     event.setNewDamage(totalDamage);
                 }
             }

@@ -28,9 +28,10 @@ public class AbyssalPredatorSpell extends AbstractAbyssalSpell {
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
                 Component.translatable("ui.irons_spellbooks.effect_length", Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 20, 1)),
-                Component.translatable("attribute.modifier.plus.1", Utils.stringTruncation(getPercentageSwimSpeed(spellLevel, caster), 0), Component.translatable("attribute.name.forge.swim_speed")),
+                Component.translatable("attribute.modifier.plus.1", Utils.stringTruncation(getPercentageSwimSpeed(spellLevel, caster), 0), Component.translatable("neoforge.swim_speed")),
                 Component.translatable("attribute.modifier.plus.1", Utils.stringTruncation(getPercentageAttackDamage(spellLevel, caster), 0), Component.translatable("attribute.name.generic.attack_damage")),
-                Component.translatable("attribute.modifier.plus.1", Utils.stringTruncation(getPercentageAttackSpeed(spellLevel, caster), 0), Component.translatable("attribute.name.generic.attack_speed"))
+                Component.translatable("attribute.modifier.plus.1", Utils.stringTruncation(getPercentageAttackSpeed(spellLevel, caster), 0), Component.translatable("attribute.name.generic.attack_speed")),
+                Component.translatable("ui.cataclysm_spellbooks.underwater_damage_bonus")
         );
     }
 

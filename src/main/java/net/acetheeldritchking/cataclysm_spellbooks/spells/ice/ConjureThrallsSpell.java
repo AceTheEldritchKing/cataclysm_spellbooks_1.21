@@ -115,6 +115,10 @@ public class ConjureThrallsSpell extends AbstractMaledictusSpell {
 
         var event = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(caster, draugurArmry, this.spellId, spellLevel));
 
+        draugurArmry.finalizeSpawn((ServerLevelAccessor) level,
+                level.getCurrentDifficultyAt(draugurArmry.getOnPos()),
+                MobSpawnType.MOB_SUMMONED, null);
+
         draugurArmry.moveTo(x, y, z);
 
         draugurArmry.addEffect(effect);

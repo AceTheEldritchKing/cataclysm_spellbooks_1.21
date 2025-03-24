@@ -202,6 +202,7 @@
     "ui.cataclysm_spellbooks.halberd_rush": "Spawns halberds at starting location and occasionally at end location",
     "ui.cataclysm_spellbooks.maledictus_armory_bonus": "Deals %d if Soul Render or Annihilator is held in the main hand",
     "ui.cataclysm_spellbooks.crab_count": "%d Summons",
+    "ui.cataclysm_spellbooks.underwater_damage_bonus": "Deal bonus damage while underwater or in rain",
 
 
     "entity.cataclysm_spellbooks.abyssal_gnawers": "Abyssal Gnawer",
