@@ -112,7 +112,7 @@ public class SummonedIgnitedRevenant extends Ignited_Revenant_Entity implements 
         {
             return true;
         }
-        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
+        else if (entityIn == getSummoner() || this.isAlliedHelper(entityIn))
         {
             return true;
         }

@@ -109,7 +109,7 @@ public class SummonedKoboleton extends Koboleton_Entity implements IMagicSummon 
         {
             return true;
         }
-        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
+        else if (entityIn == getSummoner() || this.isAlliedHelper(entityIn))
         {
             return true;
         }

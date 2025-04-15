@@ -24,8 +24,13 @@ public class CSWeaponTiers implements Tier, IronsWeaponTier {
 
     // Spellstealer (Khopesh + Spellbreaker)
     public static CSWeaponTiers SPELLSTEALER = new CSWeaponTiers(1000, 5, -2.6f, 20, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(Items.NETHERITE_SCRAP),
-            new AttributeContainer(Attributes.ARMOR, 5, AttributeModifier.Operation.ADD_VALUE),
-            new AttributeContainer(AttributeRegistry.FIRE_SPELL_POWER, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+            new AttributeContainer(AttributeRegistry.NATURE_SPELL_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+    );
+
+    // Hellfire Forge
+    public static CSWeaponTiers HELLFIRE_FORGE = new CSWeaponTiers(1561, 13.5f, -2.8f, 25, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, () -> Ingredient.of(ItemRegistry.PYRIUM_INGOT.get()),
+            new AttributeContainer(AttributeRegistry.FIRE_SPELL_POWER, 0.15, AttributeModifier.Operation.ADD_VALUE),
+            new AttributeContainer(AttributeRegistry.FIRE_MAGIC_RESIST, 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
     //private final int level;

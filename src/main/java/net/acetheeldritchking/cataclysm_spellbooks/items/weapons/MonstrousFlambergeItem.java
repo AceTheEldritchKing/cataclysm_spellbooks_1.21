@@ -3,11 +3,12 @@ package net.acetheeldritchking.cataclysm_spellbooks.items.weapons;
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
+import io.redspace.ironsspellbooks.item.UniqueItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.SpellRegistries;
 import net.minecraft.world.item.Rarity;
 
-public class MonstrousFlambergeItem extends MagicSwordItem {
+public class MonstrousFlambergeItem extends MagicSwordItem implements UniqueItem {
     public MonstrousFlambergeItem() {
         super(
                 CSWeaponTiers.MONSTROUS_FLAMBERGE,

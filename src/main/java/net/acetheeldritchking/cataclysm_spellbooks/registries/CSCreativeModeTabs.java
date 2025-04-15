@@ -34,8 +34,10 @@ public class CSCreativeModeTabs {
                         output.accept(ItemRegistries.FAKE_WUDJETS_STAFF.get());
                         output.accept(ItemRegistries.VOID_STAFF.get());
                         output.accept(ItemRegistries.SPIRIT_SUNDERER_STAFF.get());
+                        output.accept(ItemRegistries.SOUL_BRAZIER_STAFF.get());
                         // Weapons
                         output.accept(ItemRegistries.MONSTROUS_FLAMBERGE.get());
+                        output.accept(ItemRegistries.HELLFIRE_FORGE.get());
                         // Armor
                         output.accept(ItemRegistries.IGNITIUM_WIZARD_HELMET.get());
                         output.accept(ItemRegistries.IGNITIUM_WIZARD_CHESTPLATE.get());

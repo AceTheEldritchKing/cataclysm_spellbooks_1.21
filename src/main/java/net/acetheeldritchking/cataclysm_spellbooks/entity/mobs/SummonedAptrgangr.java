@@ -111,7 +111,7 @@ public class SummonedAptrgangr extends Aptrgangr_Entity implements IMagicSummon 
         {
             return true;
         }
-        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
+        else if (entityIn == getSummoner() || this.isAlliedHelper(entityIn))
         {
             return true;
         }

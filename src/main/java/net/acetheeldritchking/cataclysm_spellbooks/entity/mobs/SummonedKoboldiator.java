@@ -112,11 +112,12 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
 
     @Override
     public boolean isAlliedTo(Entity entityIn) {
+        //return super.isAlliedTo(entityIn) || this.isAlliedHelper(entityIn);
         if (entityIn == this)
         {
             return true;
         }
-        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
+        else if (entityIn == getSummoner() || this.isAlliedHelper(entityIn))
         {
             return true;
         }

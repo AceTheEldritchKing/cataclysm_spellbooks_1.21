@@ -35,8 +35,17 @@ public class CSStaffTiers implements IronsWeaponTier {
     // Spirit Sunderer Staff
     public static CSStaffTiers SPIRIT_SUNDERER_STAFF = new CSStaffTiers(3, -3,
             new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, 0.25f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.30f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.25f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+            new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.10f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.10f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.SPELL_POWER, 0.05f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+    );
+
+    // Soul Brazier Staff
+    public static CSStaffTiers SOUL_BRAZIER_STAFF = new CSStaffTiers(3, -3,
+            new AttributeContainer(AttributeRegistry.ICE_SPELL_POWER, 0.15f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.25f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.25f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.CAST_TIME_REDUCTION, 0.10f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
     float damage;

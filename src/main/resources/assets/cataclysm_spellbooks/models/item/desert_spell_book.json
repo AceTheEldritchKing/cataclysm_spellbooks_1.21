@@ -2,11 +2,22 @@
     "parent": "minecraft:item/handheld",
     "loader": "neoforge:separate_transforms",
     "base": {
-        "parent": "cataclysm_spellbooks:item/desert_spell_book_model"
+        "parent": "irons_spellbooks:item/template_spell_book_model",
+        "textures": {
+            "book": "cataclysm_spellbooks:item/spell_books/desert_spell_book_model",
+            "particle": "cataclysm_spellbooks:item/spell_books/desert_spell_book_model"
+        }
     },
     "perspectives": {
         "gui": {
             "parent": "cataclysm_spellbooks:item/desert_spell_book_gui"
+        },
+        "head": {
+            "textures": {
+                "book": "cataclysm_spellbooks:item/spell_books/desert_spell_book_model",
+                "particle": "cataclysm_spellbooks:item/spell_books/desert_spell_book_model"
+            },
+            "parent": "irons_spellbooks:item/template_spell_book_model_open"
         }
     }
 }

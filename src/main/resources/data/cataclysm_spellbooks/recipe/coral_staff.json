@@ -7,7 +7,7 @@
     ],
     "key": {
         "f": {
-            "item": "cataclysm:crystallized_coral_fragments"
+            "tag": "cataclysm_spellbooks:coral_items"
         },
         "c": {
             "item": "cataclysm:crystallized_coral"

@@ -112,7 +112,7 @@ public class SummonedIgnitedBerserker extends Ignited_Berserker_Entity implement
         {
             return true;
         }
-        else if (entityIn == getSummoner() || entityIn.isAlliedTo(getSummoner()))
+        else if (entityIn == getSummoner() || this.isAlliedHelper(entityIn))
         {
             return true;
         }

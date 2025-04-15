@@ -34,7 +34,7 @@ public class CursedFrenzyEffect extends MobEffect {
         }
         else if (pLivingEntity.horizontalCollision || pLivingEntity.minorHorizontalCollision)
         {
-            pLivingEntity.removeEffect((Holder<MobEffect>) this);
+            return false;
         }
         pLivingEntity.fallDistance = 0;
 

@@ -21,6 +21,7 @@ import net.acetheeldritchking.cataclysm_spellbooks.items.spellbooks.CodexOfMalic
 import net.acetheeldritchking.cataclysm_spellbooks.items.spellbooks.DesertSpellBook;
 import net.acetheeldritchking.cataclysm_spellbooks.items.staffs.CSStaffTiers;
 import net.acetheeldritchking.cataclysm_spellbooks.items.staffs.SpiritSundererStaff;
+import net.acetheeldritchking.cataclysm_spellbooks.items.weapons.HellfireForgeItem;
 import net.acetheeldritchking.cataclysm_spellbooks.items.weapons.MonstrousFlambergeItem;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -90,10 +91,20 @@ public class ItemRegistries {
     // Spirit Sunderer Staff
     public static final DeferredHolder<Item, Item> SPIRIT_SUNDERER_STAFF = ITEMS.register("spirit_sunderer", SpiritSundererStaff::new);
 
+    // Soul Brazier Staff
+    public static final DeferredHolder<Item, Item> SOUL_BRAZIER_STAFF = ITEMS.register("soul_brazier", () ->
+            new StaffItem(ItemPropertiesHelper.equipment(1).attributes(ExtendedSwordItem.createAttributes(CSStaffTiers.SOUL_BRAZIER_STAFF))));
+
     /***
      * Weapons
      */
+    // Monstrous Flamberge
     public static final DeferredHolder<Item, Item> MONSTROUS_FLAMBERGE = ITEMS.register("monstrous_flamberge", MonstrousFlambergeItem::new);
+
+    // Spell Stealer
+
+    // Hellfire Forge
+    public static final DeferredHolder<Item, Item> HELLFIRE_FORGE = ITEMS.register("hellfire_forge", HellfireForgeItem::new);
 
     /***
      * Generic Items
