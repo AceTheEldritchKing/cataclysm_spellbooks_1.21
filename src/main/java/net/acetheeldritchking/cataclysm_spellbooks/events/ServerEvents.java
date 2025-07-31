@@ -177,6 +177,7 @@ public class ServerEvents {
     public static void handleResistanceAttributeSpawn(EntityJoinLevelEvent event) {
         // Makes so this only works if bosses config is set to true (true by default)
         boolean resistancesConfig = Config.BOSSES_RESISTANCES.get();
+        if (ModList.get().isLoaded("potatospellbookstweaks")) return;
         if (resistancesConfig) {
 
             // Making sure mob is a living entity so neoforge doesn't have a stroke
