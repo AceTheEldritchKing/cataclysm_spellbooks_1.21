@@ -15,6 +15,7 @@ import net.acetheeldritchking.cataclysm_spellbooks.loot.CSLootModifiers;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.fml.config.ModConfig;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -64,8 +65,9 @@ public class CataclysmSpellbooks
         // Loot Tables
         CSLootModifiers.register(modEventBus);
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        //modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        // Initializes config
+        modContainer.registerConfig(ModConfig.Type.SERVER, Config.BUILDING, String.format("%s-server.toml", MOD_ID));
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

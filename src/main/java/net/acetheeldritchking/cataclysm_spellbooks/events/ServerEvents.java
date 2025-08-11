@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
 //import net.acetheeldritchking.cataclysm_spellbooks.capabilities.wrath.PlayerWrath;
 //import net.acetheeldritchking.cataclysm_spellbooks.capabilities.wrath.PlayerWrathProvider;
+import net.acetheeldritchking.cataclysm_spellbooks.Config;
 import net.acetheeldritchking.cataclysm_spellbooks.effects.potion.AbyssalPredatorPotionEffect;
 import net.acetheeldritchking.cataclysm_spellbooks.effects.potion.CursedFrenzyEffect;
 import net.acetheeldritchking.cataclysm_spellbooks.effects.potion.WrathfulPotionEffect;
@@ -30,15 +31,18 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
+@SuppressWarnings("unused")
 @EventBusSubscriber
 public class ServerEvents {
 
@@ -168,51 +172,61 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public static void handleResistanceAttributeSpawn(FinalizeSpawnEvent event)
-    {
-        var mob = event.getEntity();
+    // Changed from spawn to join level so that mobs from special spawns can be counted
+    // Keep in mind that all cataclysm mobs use special spawn for respawning
+    public static void handleResistanceAttributeSpawn(EntityJoinLevelEvent event) {
+        // Makes so this only works if bosses config is set to true (true by default)
+        boolean resistancesConfig = Config.BOSSES_RESISTANCES.get();
+        if (ModList.get().isLoaded("potatospellbookstweaks")) return;
+        if (resistancesConfig) {
 
-        if (mob.getType() == ModEntities.IGNIS.get())
-        {
-            // Ignis takes extra abyssal damage, and less fire damage
-            setIfNonNull(mob, CSAttributeRegistry.ABYSSAL_MAGIC_RESIST, 0.5);
-            setIfNonNull(mob, AttributeRegistry.FIRE_MAGIC_RESIST, 1.5);
-        }
-        if (mob.getType() == ModEntities.THE_LEVIATHAN.get())
-        {
-            // Leviathan takes extra lightning damage, and less abyssal damage
-            setIfNonNull(mob, AttributeRegistry.LIGHTNING_MAGIC_RESIST, 0.5);
-            setIfNonNull(mob, CSAttributeRegistry.ABYSSAL_MAGIC_RESIST, 1.5);
-        }
-        if (mob.getType() == ModEntities.ENDER_GUARDIAN.get())
-        {
-            // Ender Guardian takes extra ice damage, and less ender damage
-            setIfNonNull(mob, AttributeRegistry.ICE_MAGIC_RESIST, 0.5);
-            setIfNonNull(mob, AttributeRegistry.ENDER_MAGIC_RESIST, 1.5);
-        }
-        if (mob.getType() == ModEntities.THE_HARBINGER.get())
-        {
-            // Harbinger takes extra lightning damage, and less blood damage
-            setIfNonNull(mob, AttributeRegistry.LIGHTNING_MAGIC_RESIST, 0.5);
-            setIfNonNull(mob, AttributeRegistry.BLOOD_MAGIC_RESIST, 1.5);
-        }
-        if (mob.getType() == ModEntities.ANCIENT_REMNANT.get())
-        {
-            // Ancient Remnant takes extra holy damage, and less fire damage(?)
-            setIfNonNull(mob, AttributeRegistry.HOLY_MAGIC_RESIST, 0.5);
-            setIfNonNull(mob, AttributeRegistry.FIRE_MAGIC_RESIST, 1.5);
-        }
-        if (mob.getType() == ModEntities.NETHERITE_MONSTROSITY.get())
-        {
-            // Netherite Monstrosity takes extra ice damage, and less fire damage
-            setIfNonNull(mob, AttributeRegistry.ICE_MAGIC_RESIST, 0.5);
-            setIfNonNull(mob, AttributeRegistry.FIRE_MAGIC_RESIST, 1.5);
-        }
-        if (mob.getType() == ModEntities.MALEDICTUS.get())
-        {
-            // Maledictus takes extra eldritch damage, and less ice damage
-            setIfNonNull(mob, AttributeRegistry.ELDRITCH_MAGIC_RESIST, 0.5);
-            setIfNonNull(mob, AttributeRegistry.ICE_MAGIC_RESIST, 1.5);
+            // Making sure mob is a living entity so neoforge doesn't have a stroke
+            var entity = event.getEntity();
+            if (!(entity instanceof LivingEntity mob)) return;
+
+            if (mob.getType() == ModEntities.IGNIS.get()) {
+                // Ignis takes extra abyssal damage, and less fire damage
+                addIfNonNull(mob, CSAttributeRegistry.ABYSSAL_MAGIC_RESIST, 0.5);
+                addIfNonNull(mob, AttributeRegistry.FIRE_MAGIC_RESIST, 1.5);
+            }
+            if (mob.getType() == ModEntities.THE_LEVIATHAN.get()) {
+                // Leviathan takes extra lightning damage, and less abyssal damage
+                addIfNonNull(mob, AttributeRegistry.LIGHTNING_MAGIC_RESIST, 0.5);
+                addIfNonNull(mob, CSAttributeRegistry.ABYSSAL_MAGIC_RESIST, 1.5);
+            }
+            if (mob.getType() == ModEntities.ENDER_GUARDIAN.get()) {
+                // Ender Guardian takes extra ice damage, and less ender damage
+                addIfNonNull(mob, AttributeRegistry.ICE_MAGIC_RESIST, 0.5);
+                addIfNonNull(mob, AttributeRegistry.ENDER_MAGIC_RESIST, 1.5);
+            }
+            if (mob.getType() == ModEntities.THE_HARBINGER.get()) {
+                // Harbinger takes extra lightning damage, and less blood damage
+                addIfNonNull(mob, AttributeRegistry.LIGHTNING_MAGIC_RESIST, 0.5);
+                addIfNonNull(mob, AttributeRegistry.BLOOD_MAGIC_RESIST, 1.5);
+            }
+            if (mob.getType() == ModEntities.ANCIENT_REMNANT.get()) {
+                // Ancient Remnant takes extra holy damage, and less fire damage(?)
+                addIfNonNull(mob, AttributeRegistry.HOLY_MAGIC_RESIST, 0.5);
+                addIfNonNull(mob, AttributeRegistry.FIRE_MAGIC_RESIST, 1.5);
+            }
+            if (mob.getType() == ModEntities.NETHERITE_MONSTROSITY.get()) {
+                // Netherite Monstrosity takes extra ice damage, and less fire damage
+                addIfNonNull(mob, AttributeRegistry.ICE_MAGIC_RESIST, 0.5);
+                addIfNonNull(mob, AttributeRegistry.FIRE_MAGIC_RESIST, 1.5);
+            }
+            if (mob.getType() == ModEntities.MALEDICTUS.get()) {
+                // Maledictus takes extra eldritch damage, and less ice damage
+                addIfNonNull(mob, AttributeRegistry.ELDRITCH_MAGIC_RESIST, 0.5);
+                addIfNonNull(mob, AttributeRegistry.ICE_MAGIC_RESIST, 1.5);
+            }
+            /* Added Scylla tag for future use
+            if (mob.getType() == ModEntities.SCYLLA.get())
+            {
+                // Scylla takes extra nature damage, and less ice damage
+                addIfNonNull(mob, AttributeRegistry.NATURE_MAGIC_RESIST, 0.5);
+                addIfNonNull(mob, AttributeRegistry.LIGHTNING_MAGIC_RESIST, 1.5);
+            }
+            */
         }
     }
 
@@ -231,7 +245,7 @@ public class ServerEvents {
     }
 
     // Using same code from ISS for dealing with mob attributes, please forgive me
-    private static void setIfNonNull(LivingEntity entity, Holder<Attribute> attribute, double value)
+    private static void addIfNonNull(LivingEntity entity, Holder<Attribute> attribute, double value)
     {
         var instance = entity.getAttributes().getInstance(attribute);
         if (instance != null)
@@ -351,9 +365,9 @@ public class ServerEvents {
         {
             if
             (
-                !livingEntity.level().isClientSide &&
-                !damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
-                CSUtils.tryCurisumChestplateRebirth(livingEntity)
+                    !livingEntity.level().isClientSide &&
+                            !damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) &&
+                            CSUtils.tryCurisumChestplateRebirth(livingEntity)
             )
             {
                 event.setCanceled(true);
