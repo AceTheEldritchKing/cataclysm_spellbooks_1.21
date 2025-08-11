@@ -45,7 +45,6 @@ public class SummonedAmethystCrab extends Amethyst_Crab_Entity implements IMagic
 
     public SummonedAmethystCrab(Level level, LivingEntity owner) {
         this(CSEntityRegistry.SUMMONED_AMETHYST_CRAB.get(), level);
-        setSummoner(owner);
     }
 
     @Override
@@ -66,20 +65,6 @@ public class SummonedAmethystCrab extends Amethyst_Crab_Entity implements IMagic
         super.registerGoals();
     }
 
-    @Override
-    public LivingEntity getSummoner() {
-        return OwnerHelper.getAndCacheOwner(level(), cachedSummoner, summonerUUID);
-    }
-
-    public void setSummoner(@Nullable LivingEntity owner)
-    {
-        if (owner != null)
-        {
-            this.summonerUUID = owner.getUUID();
-            this.cachedSummoner = owner;
-        }
-    }
-
     // Attacks and Death
     public boolean hurt(DamageSource pSource, float pAmount) {
         return this.shouldIgnoreDamage(pSource) ? false : super.hurt(pSource, pAmount);
@@ -89,12 +74,6 @@ public class SummonedAmethystCrab extends Amethyst_Crab_Entity implements IMagic
     public void die(DamageSource pDamageSource) {
         this.onDeathHelper();
         super.die(pDamageSource);
-    }
-
-    @Override
-    public void onRemovedFromLevel() {
-        this.onRemovedHelper(this, CSPotionEffectRegistry.CRAB_TIMER);
-        super.onRemovedFromLevel();
     }
 
     @Override

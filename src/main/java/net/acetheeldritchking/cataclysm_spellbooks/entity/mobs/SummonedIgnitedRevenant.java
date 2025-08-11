@@ -39,7 +39,6 @@ public class SummonedIgnitedRevenant extends Ignited_Revenant_Entity implements 
 
     public SummonedIgnitedRevenant(Level level, LivingEntity owner) {
         this(CSEntityRegistry.SUMMONED_IGNITED_REVENANT.get(), level);
-        setSummoner(owner);
     }
 
     @Override
@@ -60,20 +59,6 @@ public class SummonedIgnitedRevenant extends Ignited_Revenant_Entity implements 
         super.registerGoals();
     }
 
-    @Override
-    public LivingEntity getSummoner() {
-        return OwnerHelper.getAndCacheOwner(level(), cachedSummoner, summonerUUID);
-    }
-
-    public void setSummoner(@Nullable LivingEntity owner)
-    {
-        if (owner != null)
-        {
-            this.summonerUUID = owner.getUUID();
-            this.cachedSummoner = owner;
-        }
-    }
-
     // Attacks and Death
     public boolean hurt(DamageSource pSource, float pAmount) {
         return this.shouldIgnoreDamage(pSource) ? false : super.hurt(pSource, pAmount);
@@ -86,16 +71,10 @@ public class SummonedIgnitedRevenant extends Ignited_Revenant_Entity implements 
     }
 
     @Override
-    public void onRemovedFromLevel() {
-        this.onRemovedHelper(this, CSPotionEffectRegistry.DRAUGUR_TIMER);
-        super.onRemovedFromLevel();
-    }
-
-    @Override
     public void onUnSummon() {
         if (!level().isClientSide)
         {
-            MagicManager.spawnParticles(level(), ModParticle.SMALL_CURSED_FLAME.get(),
+            MagicManager.spawnParticles(level(), ModParticle.TRAP_FLAME.get(),
                     getX(), getY(), getZ(),
                     25,
                     level().random.nextGaussian() * 0.007D,

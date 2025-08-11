@@ -2,6 +2,12 @@ package net.acetheeldritchking.cataclysm_spellbooks;
 
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import mod.azure.azurelib.rewrite.animation.cache.AzIdentityRegistry;
+import mod.azure.azurelib.rewrite.render.armor.AzArmorRendererRegistry;
+import mod.azure.azurelib.rewrite.render.item.AzItemRendererRegistry;
+import net.acetheeldritchking.cataclysm_spellbooks.entity.render.armor.*;
+import net.acetheeldritchking.cataclysm_spellbooks.entity.render.items.CodexOfMaliceSpellBookRenderer;
+import net.acetheeldritchking.cataclysm_spellbooks.entity.render.items.SpiritSundererStaffRenderer;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.render.spells.HellishBladeRenderer;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.render.spells.InfernalBladeRenderer;
 import net.acetheeldritchking.cataclysm_spellbooks.items.armor.CSArmorMaterialRegistry;
@@ -65,6 +71,22 @@ public class CataclysmSpellbooks
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         // Some common setup code
+        // Animation Registry
+        AzIdentityRegistry.register(
+                ItemRegistries.IGNITIUM_WIZARD_CHESTPLATE_ELYTRA.get(),
+                ItemRegistries.CURSIUM_MAGE_CHESTPLATE_ELYTRA.get()
+                /*ItemRegistries.DISC_DRIVER.get(),
+                ItemRegistries.GAUNTLET_OF_GATTLING.get(),
+                ItemRegistries.THE_NIGHTSTALKER.get(),
+                ItemRegistries.THE_BERSERKER.get(),
+                ItemRegistries.THE_COMBUSTER.get(),
+                ItemRegistries.EXCELSIUS_SPEED_HELMET.get(),
+                ItemRegistries.EXCELSIUS_RESIST_HELMET.get(),
+                ItemRegistries.EXCELSIUS_POWER_HELMET.get(),
+                ItemRegistries.EXCELSIUS_SPEED_CHESTPLATE.get(),
+                ItemRegistries.EXCELSIUS_RESIST_CHESTPLATE.get(),
+                ItemRegistries.EXCELSIUS_POWER_CHESTPLATE.get()*/
+        );
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -83,6 +105,76 @@ public class CataclysmSpellbooks
         {
             // Some client setup code
             ItemRegistries.getCSItems().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
+
+            // Armor Rendering Registry
+            AzArmorRendererRegistry.register(AbyssalWarlockArmorRenderer::new,
+                    ItemRegistries.ABYSSAL_WARLOCK_HELMET.get(),
+                    ItemRegistries.ABYSSAL_WARLOCK_CHESTPLATE.get(),
+                    ItemRegistries.ABYSSAL_WARLOCK_LEGGINGS.get(),
+                    ItemRegistries.ABYSSAL_WARLOCK_BOOTS.get());
+            AzArmorRendererRegistry.register(AbyssalWarlockMaskRenderer::new, ItemRegistries.ABYSSAL_WARLOCK_MASK.get());
+
+            AzArmorRendererRegistry.register(IgnisWizardArmorRenderer::new,
+                    ItemRegistries.IGNITIUM_WIZARD_HELMET.get(),
+                    ItemRegistries.IGNITIUM_WIZARD_CHESTPLATE.get(),
+                    ItemRegistries.IGNITIUM_WIZARD_LEGGINGS.get(),
+                    ItemRegistries.IGNITIUM_WIZARD_BOOTS.get());
+            AzArmorRendererRegistry.register(IgnisWizardElytraArmorRenderer::new, ItemRegistries.IGNITIUM_WIZARD_CHESTPLATE_ELYTRA.get());
+
+            AzArmorRendererRegistry.register(CursiumMageArmorRenderer::new,
+                    ItemRegistries.CURSIUM_MAGE_HELMET.get(),
+                    ItemRegistries.CURSIUM_MAGE_CHESTPLATE.get(),
+                    ItemRegistries.CURSIUM_MAGE_LEGGINGS.get(),
+                    ItemRegistries.CURSIUM_MAGE_BOOTS.get());
+            AzArmorRendererRegistry.register(CursiumMageElytraArmorRenderer::new, ItemRegistries.CURSIUM_MAGE_CHESTPLATE_ELYTRA.get());
+
+            /*AzArmorRendererRegistry.register(PharaohMageArmorRenderer::new,
+                    ItemRegistries.PHARAOH_MAGE_HELMET.get(),
+                    ItemRegistries.PHARAOH_MAGE_CHESTPLATE.get(),
+                    ItemRegistries.PHARAOH_MAGE_LEGGINGS.get(),
+                    ItemRegistries.PHARAOH_MAGE_BOOTS.get());
+
+            AzArmorRendererRegistry.register(BloomStoneMageArmorRenderer::new,
+                    ItemRegistries.BLOOM_STONE_HAT.get(),
+                    ItemRegistries.BLOOM_STONE_CHESTPLATE.get(),
+                    ItemRegistries.BLOOM_STONE_SKIRT.get(),
+                    ItemRegistries.BLOOM_STONE_GREAVES.get());
+
+            AzArmorRendererRegistry.register(MonstrousWizardHatArmorRenderer::new, ItemRegistries.MONSTROUS_WIZARD_HAT.get());
+
+            AzArmorRendererRegistry.register(EngineerMageArmorRenderer::new,
+                    ItemRegistries.ENGINEER_MAGE_HOOD.get(),
+                    ItemRegistries.ENGINEER_MAGE_SUIT.get(),
+                    ItemRegistries.ENGINEER_MAGE_LEGGINGS.get(),
+                    ItemRegistries.ENGINEER_MAGE_BOOTS.get());
+
+            AzArmorRendererRegistry.register(ExcelsiusCooldownArmorRenderer::new,
+                    ItemRegistries.EXCELSIUS_SPEED_HELMET.get(),
+                    ItemRegistries.EXCELSIUS_SPEED_CHESTPLATE.get());
+
+            AzArmorRendererRegistry.register(ExcelsiusPowerArmorRenderer::new,
+                    ItemRegistries.EXCELSIUS_POWER_HELMET.get(),
+                    ItemRegistries.EXCELSIUS_POWER_CHESTPLATE.get());
+
+            AzArmorRendererRegistry.register(ExcelsiusResistArmorRenderer::new,
+                    ItemRegistries.EXCELSIUS_RESIST_HELMET.get(),
+                    ItemRegistries.EXCELSIUS_RESIST_CHESTPLATE.get());
+
+            AzArmorRendererRegistry.register(ExcelsiusLegArmorRenderer::new,
+                    ItemRegistries.EXCELSIUS_WARLOCK_LEGGINGS.get(),
+                    ItemRegistries.EXCELSIUS_WARLOCK_BOOTS.get());*/
+
+            // Item Rendering Registry
+            AzItemRendererRegistry.register(CodexOfMaliceSpellBookRenderer::new, ItemRegistries.CODEX_OF_MALICE.get());
+            //AzItemRendererRegistry.register(DiscDriverSpellbookRenderer::new, ItemRegistries.DISC_DRIVER.get());
+            AzItemRendererRegistry.register(SpiritSundererStaffRenderer::new, ItemRegistries.SPIRIT_SUNDERER_STAFF.get());
+            /*AzItemRendererRegistry.register(GauntletOfPowerRenderer::new, ItemRegistries.GAUNTLET_OF_POWER.get());
+            AzItemRendererRegistry.register(GauntletOfGattlingRenderer::new, ItemRegistries.GAUNTLET_OF_GATTLING.get());
+            AzItemRendererRegistry.register(TheNightStalkerRenderer::new, ItemRegistries.THE_NIGHTSTALKER.get());
+            AzItemRendererRegistry.register(TheBerserkerRenderer::new, ItemRegistries.THE_BERSERKER.get());
+            AzItemRendererRegistry.register(TheCombusterRenderer::new, ItemRegistries.THE_COMBUSTER.get());
+            AzItemRendererRegistry.register(MurasamaBladeRenderer::new, ItemRegistries.MURASAMA.get());
+            AzItemRendererRegistry.register(BurstSheathRenderer::new, ItemRegistries.BURST_SHEATH.get());*/
         }
     }
 

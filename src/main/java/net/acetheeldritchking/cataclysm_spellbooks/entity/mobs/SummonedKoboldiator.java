@@ -2,6 +2,7 @@ package net.acetheeldritchking.cataclysm_spellbooks.entity.mobs;
 
 import com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.Kobolediator_Entity;
 import com.github.L_Ender.cataclysm.init.ModParticle;
+import com.github.L_Ender.cataclysm.init.ModTag;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
@@ -43,14 +44,19 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
 
     public SummonedKoboldiator(Level level, LivingEntity owner) {
         this(CSEntityRegistry.SUMMONED_KOBOLDIATOR.get(), level);
-        setSummoner(owner);
     }
 
     @Override
     protected void registerGoals() {
+        super.registerGoals();
+
         this.goalSelector.getAvailableGoals().removeIf(goal ->
                 goal.getGoal() instanceof HurtByTargetGoal || goal.getGoal() instanceof NearestAttackableTargetGoal
         );
+
+        this.targetSelector.removeGoal(new NearestAttackableTargetGoal<Player>(this, Player.class, true));
+        this.targetSelector.removeGoal(new HurtByTargetGoal(this, Player.class));
+
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.5f, true));
         this.goalSelector.addGoal(3, new GenericFollowOwnerGoal(this, this::getSummoner, 1.0f, 10, 2, false, 50));
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F, 1.0F));
@@ -61,21 +67,6 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
         this.targetSelector.addGoal(2, new GenericOwnerHurtTargetGoal(this, this::getSummoner));
         this.targetSelector.addGoal(3, new GenericCopyOwnerTargetGoal(this, this::getSummoner));
         this.targetSelector.addGoal(4, (new GenericHurtByTargetGoal(this, (entity) -> entity == getSummoner())).setAlertOthers());
-        super.registerGoals();
-    }
-
-    @Override
-    public LivingEntity getSummoner() {
-        return OwnerHelper.getAndCacheOwner(level(), cachedSummoner, summonerUUID);
-    }
-
-    public void setSummoner(@Nullable LivingEntity owner)
-    {
-        if (owner != null)
-        {
-            this.summonerUUID = owner.getUUID();
-            this.cachedSummoner = owner;
-        }
     }
 
     // Attacks and Death
@@ -90,16 +81,10 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
     }
 
     @Override
-    public void onRemovedFromLevel() {
-        this.onRemovedHelper(this, CSPotionEffectRegistry.KOBOLDIATOR_TIMER);
-        super.onRemovedFromLevel();
-    }
-
-    @Override
     public void onUnSummon() {
         if (!level().isClientSide)
         {
-            MagicManager.spawnParticles(level(), ModParticle.SANDSTORM.get(),
+            MagicManager.spawnParticles(level(), ModParticle.DESERT_GLYPH.get(),
                     getX(), getY(), getZ(),
                     25,
                     level().random.nextGaussian() * 0.007D,
@@ -121,13 +106,13 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
         {
             return true;
         }
-        else if (getSummoner() != null && !entityIn.isAlliedTo(getSummoner()))
+        else if (getSummoner() != null && entityIn.getType().is(ModTag.TEAM_ANCIENT_REMNANT))
         {
             return false;
         }
         else
         {
-            return this.getTeam() == null && entityIn.getTeam() == null;
+            return super.isAlliedTo(entityIn) || this.isAlliedHelper(entityIn);
         }
     }
 

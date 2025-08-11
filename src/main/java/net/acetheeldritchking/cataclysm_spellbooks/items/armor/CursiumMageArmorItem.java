@@ -1,45 +1,35 @@
 package net.acetheeldritchking.cataclysm_spellbooks.items.armor;
 
+import com.github.L_Ender.cataclysm.Cataclysm;
 import com.github.L_Ender.cataclysm.config.CMConfig;
 import com.github.L_Ender.cataclysm.init.ModKeybind;
-import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import mod.azure.azurelib.common.internal.client.RenderProvider;
-import net.acetheeldritchking.cataclysm_spellbooks.entity.render.armor.CursiumMageArmorRenderer;
-import net.acetheeldritchking.cataclysm_spellbooks.entity.render.armor.IgnisWizardArmorRenderer;
+import com.github.L_Ender.cataclysm.items.KeybindUsingArmor;
+import com.github.L_Ender.cataclysm.message.MessageArmorKey;
+import net.acetheeldritchking.cataclysm_spellbooks.registries.ItemRegistries;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.network.PacketDistributor;
 
+import javax.annotation.Nullable;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class CursiumMageArmorItem extends ImbuableCSArmorItem {
+public class CursiumMageArmorItem extends ImbuableCSArmorItem implements KeybindUsingArmor {
     public CursiumMageArmorItem(Type slot, Properties settings) {
-        super(CSArmorMaterialRegistry.CURSIUM_WARLOCK_ARMOR, slot, settings, schoolAttributesWithResistance(AttributeRegistry.ICE_SPELL_POWER, AttributeRegistry.MANA_REGEN, 150, 0.15F, 0.05F, 0.05F));
+        super(CSArmorMaterialRegistry.CURSIUM_WARLOCK_ARMOR, slot, settings);
     }
 
-    @Override
-    public void createRenderer(Consumer<RenderProvider> consumer) {
-        consumer.accept(new RenderProvider() {
-            private CursiumMageArmorRenderer renderer;
-
-            @Override
-            public HumanoidModel<LivingEntity> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<LivingEntity> original) {
-                if (renderer == null)
-                {
-                    renderer = new CursiumMageArmorRenderer();
-                }
-                renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
-
-                return this.renderer;
-            }
-        });
-    }
-
+    // Compat with Cataclysm
     @Override
     public void setDamage(ItemStack stack, int damage) {
         if (CMConfig.Armor_Infinity_Durability)
@@ -52,33 +42,29 @@ public class CursiumMageArmorItem extends ImbuableCSArmorItem {
         }
     }
 
-    // Using the same stuff as Cataclysm for tooltips
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flags) {
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag tooltipFlag) {
         if (this.type == Type.HELMET) {
             tooltip.add(Component.translatable("item.cataclysm.cursium_helmet.desc").withStyle(ChatFormatting.DARK_GREEN));
             tooltip.add(Component.translatable("item.cataclysm.cursium_helmet.desc2", ModKeybind.HELMET_KEY_ABILITY.getTranslatedKeyMessage()).withStyle(ChatFormatting.DARK_GREEN));
         }
-
         if (this.type == Type.CHESTPLATE) {
             tooltip.add(Component.translatable("item.cataclysm.cursium_chestplate.desc").withStyle(ChatFormatting.DARK_GREEN));
             tooltip.add(Component.translatable("item.cataclysm.cursium_chestplate.desc2").withStyle(ChatFormatting.DARK_GREEN));
             tooltip.add(Component.translatable("item.cataclysm.cursium_chestplate.desc3").withStyle(ChatFormatting.DARK_GREEN));
             tooltip.add(Component.translatable("item.cataclysm_spellbooks.cursium_chestplate.desc4").withStyle(ChatFormatting.DARK_GREEN));
         }
-
         if (this.type == Type.LEGGINGS) {
             tooltip.add(Component.translatable("item.cataclysm.cursium_leggings.desc").withStyle(ChatFormatting.DARK_GREEN));
             tooltip.add(Component.translatable("item.cataclysm.cursium_leggings.desc2").withStyle(ChatFormatting.DARK_GREEN));
         }
-
         if (this.type == Type.BOOTS) {
             tooltip.add(Component.translatable("item.cataclysm.cursium_boots.desc").withStyle(ChatFormatting.DARK_GREEN));
             tooltip.add(Component.translatable("item.cataclysm.cursium_boots.desc2",ModKeybind.BOOTS_KEY_ABILITY.getTranslatedKeyMessage()).withStyle(ChatFormatting.DARK_GREEN));
         }
-
     }
 
-    /*@Override
+    @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
 
@@ -86,18 +72,31 @@ public class CursiumMageArmorItem extends ImbuableCSArmorItem {
         {
             if (player.getItemBySlot(EquipmentSlot.HEAD).getItem() == ItemRegistries.CURSIUM_MAGE_HELMET.get())
             {
-                PacketDistributor.sendToServer(new MessageArmorKey(EquipmentSlot.HEAD.ordinal(), living.getId(), 5), new CustomPacketPayload[0]);
-                this.onKeyPacket(player, pStack, 5);
+                if (pLevel.isClientSide())
+                {
+                    if (ModKeybind.HELMET_KEY_ABILITY.isDown())
+                    {
+                        PacketDistributor.sendToServer(new MessageArmorKey(EquipmentSlot.HEAD.ordinal(), player.getId(), 5), new CustomPacketPayload[0]);
+                        this.onKeyPacket(player, pStack, 5);
+                    }
+                }
             }
             if (player.getItemBySlot(EquipmentSlot.FEET).getItem() == ItemRegistries.CURSIUM_MAGE_BOOTS.get())
             {
-                PacketDistributor.sendToServer(new MessageArmorKey(EquipmentSlot.HEAD.ordinal(), living.getId(), 7), new CustomPacketPayload[0]);
-                this.onKeyPacket(player, pStack, 7);
+                if (pLevel.isClientSide())
+                {
+                    if (ModKeybind.BOOTS_KEY_ABILITY.isDown())
+                    {
+                        PacketDistributor.sendToServer(new MessageArmorKey(EquipmentSlot.HEAD.ordinal(), player.getId(), 7), new CustomPacketPayload[0]);
+                        this.onKeyPacket(player, pStack, 7);
+                    }
+                }
             }
         }
     }
 
     // Keybind stuff
+    @Override
     public void onKeyPacket(Player player, ItemStack itemStack, int i) {
         if (i == 5)
         {
@@ -132,5 +131,5 @@ public class CursiumMageArmorItem extends ImbuableCSArmorItem {
                 player.getCooldowns().addCooldown(ItemRegistries.CURSIUM_MAGE_BOOTS.get(), 200);
             }
         }
-    }*/
+    }
 }

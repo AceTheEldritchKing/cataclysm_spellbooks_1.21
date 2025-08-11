@@ -38,7 +38,6 @@ public class SummonedAptrgangr extends Aptrgangr_Entity implements IMagicSummon 
 
     public SummonedAptrgangr(Level level, LivingEntity owner) {
         this(CSEntityRegistry.SUMMONED_APTRGANGR.get(), level);
-        setSummoner(owner);
     }
 
     @Override
@@ -59,20 +58,6 @@ public class SummonedAptrgangr extends Aptrgangr_Entity implements IMagicSummon 
         super.registerGoals();
     }
 
-    @Override
-    public LivingEntity getSummoner() {
-        return OwnerHelper.getAndCacheOwner(level(), cachedSummoner, summonerUUID);
-    }
-
-    public void setSummoner(@Nullable LivingEntity owner)
-    {
-        if (owner != null)
-        {
-            this.summonerUUID = owner.getUUID();
-            this.cachedSummoner = owner;
-        }
-    }
-
     // Attacks and Death
     public boolean hurt(DamageSource pSource, float pAmount) {
         return this.shouldIgnoreDamage(pSource) ? false : super.hurt(pSource, pAmount);
@@ -82,12 +67,6 @@ public class SummonedAptrgangr extends Aptrgangr_Entity implements IMagicSummon 
     public void die(DamageSource pDamageSource) {
         this.onDeathHelper();
         super.die(pDamageSource);
-    }
-
-    @Override
-    public void onRemovedFromLevel() {
-        this.onRemovedHelper(this, CSPotionEffectRegistry.DRAUGUR_TIMER);
-        super.onRemovedFromLevel();
     }
 
     @Override
