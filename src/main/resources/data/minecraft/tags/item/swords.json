@@ -2,10 +2,6 @@
   "replace": false,
   "values": [
     "cataclysm_spellbooks:monstrous_flamberge",
-    "cataclysm_spellbooks:bloom_stone_staff",
-    "cataclysm_spellbooks:coral_staff",
-    "cataclysm_spellbooks:fake_wudjets_staff",
-    "cataclysm_spellbooks:void_staff",
-    "cataclysm_spellbooks:spirit_sunderer"
+    "cataclysm_spellbooks:hellfire_forge"
   ]
 }
