@@ -142,7 +142,7 @@ dependencies {
 
     // GECKOLIB ***************************************************************************************************
     //implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
-    implementation "curse.maven:geckolib-388172:6027599"
+    implementation "curse.maven:geckolib-388172:6304958"
 
     // CAELUS *****************************************************************************************************
     compileOnly "com.illusivesoulworks.caelus:caelus-neoforge:${caelus_version}:api"
@@ -150,7 +150,7 @@ dependencies {
 
     // PLAYER ANIMATOR ********************************************************************************************
     //compileOnly "dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}"
-    implementation "dev.kosmx.player-anim:player-animation-lib-forge:${player_animator_version}"
+    implementation "curse.maven:playeranimator-658587:6024462"
     //jarJar(group: "dev.kosmx.player-anim", name: "player-animation-lib-forge", version: "[${player_animator_version},${player_animator_version}]")
 
     // TETRA ******************************************************************************************************
@@ -194,13 +194,13 @@ dependencies {
     implementation "curse.maven:spell-collector-lib-1149858:6174572"
 
     // Cataclysm
-    implementation "curse.maven:lendercataclysm-551586:6849033"
+    implementation "curse.maven:lendercataclysm-551586:6906997"
 
     // Lionfish
     implementation "curse.maven:lionfish-api-1001614:6168249"
 
     // Ace's Spell Utils
-    implementation "curse.maven:aces-spell-utils-1299492:6845096"
+    implementation "curse.maven:aces-spell-utils-1299492:6909010"
 
     //QOL
     //todo: 1.21: update these mods

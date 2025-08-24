@@ -57,7 +57,6 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
         this.targetSelector.removeGoal(new NearestAttackableTargetGoal<Player>(this, Player.class, true));
         this.targetSelector.removeGoal(new HurtByTargetGoal(this, Player.class));
 
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.5f, true));
         this.goalSelector.addGoal(3, new GenericFollowOwnerGoal(this, this::getSummoner, 1.0f, 10, 2, false, 50));
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F, 1.0F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Mob.class, 9.0F));
@@ -78,6 +77,11 @@ public class SummonedKoboldiator extends Kobolediator_Entity implements IMagicSu
     public void die(DamageSource pDamageSource) {
         this.onDeathHelper();
         super.die(pDamageSource);
+    }
+
+    @Override
+    protected boolean shouldDropLoot() {
+        return false;
     }
 
     @Override

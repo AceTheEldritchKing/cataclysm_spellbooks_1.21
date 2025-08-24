@@ -2,41 +2,33 @@ package net.acetheeldritchking.cataclysm_spellbooks.events;
 
 import com.github.L_Ender.cataclysm.init.ModEffect;
 import com.github.L_Ender.cataclysm.init.ModEntities;
-import com.github.L_Ender.cataclysm.init.ModSounds;
 import com.github.L_Ender.lionfishapi.server.event.StandOnFluidEvent;
 import io.redspace.ironsspellbooks.api.events.ModifySpellLevelEvent;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
 //import net.acetheeldritchking.cataclysm_spellbooks.capabilities.wrath.PlayerWrath;
 //import net.acetheeldritchking.cataclysm_spellbooks.capabilities.wrath.PlayerWrathProvider;
-import net.acetheeldritchking.cataclysm_spellbooks.Config;
+import net.acetheeldritchking.cataclysm_spellbooks.util.CSConfig;
 import net.acetheeldritchking.cataclysm_spellbooks.effects.potion.AbyssalPredatorPotionEffect;
 import net.acetheeldritchking.cataclysm_spellbooks.effects.potion.CursedFrenzyEffect;
-import net.acetheeldritchking.cataclysm_spellbooks.effects.potion.WrathfulPotionEffect;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.CSAttributeRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.CSPotionEffectRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.ItemRegistries;
-import net.acetheeldritchking.cataclysm_spellbooks.registries.SpellRegistries;
 import net.acetheeldritchking.cataclysm_spellbooks.util.CSUtils;
 import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.*;
@@ -176,7 +168,7 @@ public class ServerEvents {
     // Keep in mind that all cataclysm mobs use special spawn for respawning
     public static void handleResistanceAttributeSpawn(EntityJoinLevelEvent event) {
         // Makes so this only works if bosses config is set to true (true by default)
-        boolean resistancesConfig = Config.BOSSES_RESISTANCES.get();
+        boolean resistancesConfig = CSConfig.BOSSES_RESISTANCES.get();
         if (ModList.get().isLoaded("potatospellbookstweaks")) return;
         if (resistancesConfig) {
 

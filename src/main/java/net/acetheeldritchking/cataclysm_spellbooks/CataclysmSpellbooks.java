@@ -8,12 +8,10 @@ import mod.azure.azurelib.rewrite.render.item.AzItemRendererRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.render.armor.*;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.render.items.CodexOfMaliceSpellBookRenderer;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.render.items.SpiritSundererStaffRenderer;
-import net.acetheeldritchking.cataclysm_spellbooks.entity.render.spells.HellishBladeRenderer;
-import net.acetheeldritchking.cataclysm_spellbooks.entity.render.spells.InfernalBladeRenderer;
 import net.acetheeldritchking.cataclysm_spellbooks.items.armor.CSArmorMaterialRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.loot.CSLootModifiers;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.*;
-import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.acetheeldritchking.cataclysm_spellbooks.util.CSConfig;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.fml.config.ModConfig;
 import org.jetbrains.annotations.NotNull;
@@ -66,7 +64,7 @@ public class CataclysmSpellbooks
         CSLootModifiers.register(modEventBus);
 
         // Initializes config
-        modContainer.registerConfig(ModConfig.Type.SERVER, Config.BUILDING, String.format("%s-server.toml", MOD_ID));
+        modContainer.registerConfig(ModConfig.Type.SERVER, CSConfig.BUILDING, String.format("%s-server.toml", MOD_ID));
 
     }
 
