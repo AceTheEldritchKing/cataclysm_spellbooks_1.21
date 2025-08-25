@@ -5,6 +5,8 @@ import com.github.L_Ender.cataclysm.config.CMConfig;
 import com.github.L_Ender.cataclysm.init.ModKeybind;
 import com.github.L_Ender.cataclysm.items.KeybindUsingArmor;
 import com.github.L_Ender.cataclysm.message.MessageArmorKey;
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import net.acetheeldritchking.cataclysm_spellbooks.registries.CSAttributeRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.ItemRegistries;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -26,7 +28,7 @@ import java.util.List;
 
 public class CursiumMageArmorItem extends ImbuableCSArmorItem implements KeybindUsingArmor {
     public CursiumMageArmorItem(Type slot, Properties settings) {
-        super(CSArmorMaterialRegistry.CURSIUM_WARLOCK_ARMOR, slot, settings);
+        super(CSArmorMaterialRegistry.CURSIUM_WARLOCK_ARMOR, slot, settings, schoolAttributesWithResistance(AttributeRegistry.ICE_SPELL_POWER, AttributeRegistry.ICE_MAGIC_RESIST, 150, 0.2F, 0.05F, 0.1F));
     }
 
     // Compat with Cataclysm

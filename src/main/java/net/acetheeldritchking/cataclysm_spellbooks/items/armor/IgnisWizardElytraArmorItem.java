@@ -1,6 +1,7 @@
 package net.acetheeldritchking.cataclysm_spellbooks.items.armor;
 
 import com.github.L_Ender.cataclysm.config.CMConfig;
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,7 +17,7 @@ import java.util.List;
 public class IgnisWizardElytraArmorItem extends ImbuableCSArmorItem {
 
     public IgnisWizardElytraArmorItem(Type slot, Properties settings) {
-        super(CSArmorMaterialRegistry.IGNITIUM_WIZARD_ARMOR, slot, settings);
+        super(CSArmorMaterialRegistry.IGNITIUM_WIZARD_ARMOR, slot, settings, schoolAttributesWithResistance(AttributeRegistry.FIRE_SPELL_POWER, AttributeRegistry.FIRE_MAGIC_RESIST, 150, 0.2F, 0.05F, 0.1F));
     }
 
     // Ignis Wizard Armor should have durability compat with Cataclysm?
