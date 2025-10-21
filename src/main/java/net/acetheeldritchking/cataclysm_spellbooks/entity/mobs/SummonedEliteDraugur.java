@@ -39,9 +39,7 @@ public class SummonedEliteDraugur extends Elite_Draugr_Entity implements IMagicS
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.getAvailableGoals().removeIf(goal ->
-                goal.getGoal() instanceof HurtByTargetGoal || goal.getGoal() instanceof NearestAttackableTargetGoal
-        );
+
         this.goalSelector.addGoal(3, new GenericFollowOwnerGoal(this, this::getSummoner, 1.0f, 10, 2, false, 50));
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F, 1.0F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Mob.class, 9.0F));
@@ -52,6 +50,10 @@ public class SummonedEliteDraugur extends Elite_Draugr_Entity implements IMagicS
         this.targetSelector.addGoal(3, new GenericCopyOwnerTargetGoal(this, this::getSummoner));
         this.targetSelector.addGoal(4, (new GenericHurtByTargetGoal(this, (entity) -> entity == getSummoner())).setAlertOthers());
         super.registerGoals();
+
+        this.goalSelector.getAvailableGoals().removeIf(goal ->
+                goal.getGoal() instanceof HurtByTargetGoal || goal.getGoal() instanceof NearestAttackableTargetGoal
+        );
     }
 
     // Attacks and Death

@@ -43,9 +43,7 @@ public class SummonedIgnitedRevenant extends Ignited_Revenant_Entity implements 
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.getAvailableGoals().removeIf(goal ->
-                goal.getGoal() instanceof HurtByTargetGoal || goal.getGoal() instanceof NearestAttackableTargetGoal
-        );
+
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(5, new GenericFollowOwnerGoal(this, this::getSummoner, 1.0f, 10, 2, true, 50));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 8.0F, 1.0F));
@@ -56,6 +54,10 @@ public class SummonedIgnitedRevenant extends Ignited_Revenant_Entity implements 
         this.targetSelector.addGoal(3, new GenericCopyOwnerTargetGoal(this, this::getSummoner));
         this.targetSelector.addGoal(4, (new GenericHurtByTargetGoal(this, (entity) -> entity == getSummoner())).setAlertOthers());
         super.registerGoals();
+
+        this.goalSelector.getAvailableGoals().removeIf(goal ->
+                goal.getGoal() instanceof HurtByTargetGoal || goal.getGoal() instanceof NearestAttackableTargetGoal
+        );
     }
 
     // Attacks and Death
