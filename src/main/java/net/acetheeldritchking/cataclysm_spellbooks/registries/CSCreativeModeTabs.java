@@ -21,6 +21,7 @@ public class CSCreativeModeTabs {
                         // Materials
                         output.accept(ItemRegistries.ABYSSAL_RUNE.get());
                         output.accept(ItemRegistries.ABYSSAL_UPGRADE_ORB.get());
+                        output.accept(ItemRegistries.TECHNOMANCY_UPGRADE_ORB.get());
                         // Curios
                         output.accept(ItemRegistries.LEVIATHANS_BLESSING.get());
                         // Spellbooks
@@ -56,6 +57,32 @@ public class CSCreativeModeTabs {
                         output.accept(ItemRegistries.CURSIUM_MAGE_CHESTPLATE_ELYTRA.get());
                         output.accept(ItemRegistries.CURSIUM_MAGE_LEGGINGS.get());
                         output.accept(ItemRegistries.CURSIUM_MAGE_BOOTS.get());
+
+                        output.accept(ItemRegistries.BLOOM_STONE_HAT.get());
+                        output.accept(ItemRegistries.BLOOM_STONE_CHESTPLATE.get());
+                        output.accept(ItemRegistries.BLOOM_STONE_SKIRT.get());
+                        output.accept(ItemRegistries.BLOOM_STONE_GREAVES.get());
+
+                        output.accept(ItemRegistries.PHARAOH_MAGE_HELMET.get());
+                        output.accept(ItemRegistries.PHARAOH_MAGE_CHESTPLATE.get());
+                        output.accept(ItemRegistries.PHARAOH_MAGE_LEGGINGS.get());
+                        output.accept(ItemRegistries.PHARAOH_MAGE_BOOTS.get());
+
+                        output.accept(ItemRegistries.MONSTROUS_WIZARD_HAT.get());
+
+                        output.accept(ItemRegistries.ENGINEER_MAGE_HOOD.get());
+                        output.accept(ItemRegistries.ENGINEER_MAGE_SUIT.get());
+                        output.accept(ItemRegistries.ENGINEER_MAGE_LEGGINGS.get());
+                        output.accept(ItemRegistries.ENGINEER_MAGE_BOOTS.get());
+
+                        output.accept(ItemRegistries.EXCELSIUS_SPEED_HELMET.get());
+                        output.accept(ItemRegistries.EXCELSIUS_SPEED_CHESTPLATE.get());
+                        output.accept(ItemRegistries.EXCELSIUS_POWER_HELMET.get());
+                        output.accept(ItemRegistries.EXCELSIUS_POWER_CHESTPLATE.get());
+                        output.accept(ItemRegistries.EXCELSIUS_RESIST_HELMET.get());
+                        output.accept(ItemRegistries.EXCELSIUS_RESIST_CHESTPLATE.get());
+                        output.accept(ItemRegistries.EXCELSIUS_WARLOCK_LEGGINGS.get());
+                        output.accept(ItemRegistries.EXCELSIUS_WARLOCK_BOOTS.get());
                     }).build());
 
     public static void register(IEventBus eventBus)

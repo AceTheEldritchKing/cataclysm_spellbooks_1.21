@@ -16,7 +16,13 @@ public class HellishBladeRenderer extends GeoEntityRenderer<HellishBladeProjecti
 
     @Override
     public ResourceLocation getTextureLocation(HellishBladeProjectile animatable) {
-        return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/hellish_blade/hellish_blade.png");
+        if (animatable.getIsSoul())
+        {
+            return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/hellish_blade/hellish_blade_soul.png");
+        } else
+        {
+            return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/hellish_blade/hellish_blade.png");
+        }
     }
 
     @Override

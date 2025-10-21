@@ -12,7 +12,13 @@ public class HellishBladeModel extends GeoModel<HellishBladeProjectile> {
 
     @Override
     public ResourceLocation getTextureResource(HellishBladeProjectile object) {
-        return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/hellish_blade/hellish_blade.png");
+        if (object.getIsSoul())
+        {
+            return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/hellish_blade/hellish_blade_soul.png");
+        } else
+        {
+            return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/hellish_blade/hellish_blade.png");
+        }
     }
 
     @Override

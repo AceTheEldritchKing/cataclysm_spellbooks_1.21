@@ -28,7 +28,15 @@ import java.util.List;
 
 public class CursiumMageArmorItem extends ImbuableCSArmorItem implements KeybindUsingArmor {
     public CursiumMageArmorItem(Type slot, Properties settings) {
-        super(CSArmorMaterialRegistry.CURSIUM_WARLOCK_ARMOR, slot, settings, schoolAttributesWithResistance(AttributeRegistry.ICE_SPELL_POWER, AttributeRegistry.ICE_MAGIC_RESIST, 150, 0.2F, 0.05F, 0.1F));
+        super(CSArmorMaterialRegistry.CURSIUM_WARLOCK_ARMOR, slot, settings,
+                schoolAttributesWithResistance(
+                        AttributeRegistry.ICE_SPELL_POWER,
+                        AttributeRegistry.ICE_MAGIC_RESIST,
+                        150,
+                        0.2F,
+                        0.05F,
+                        0.1F)
+        );
     }
 
     // Compat with Cataclysm

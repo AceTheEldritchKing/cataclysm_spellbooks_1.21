@@ -16,8 +16,10 @@ public class CSAttributeRegistry {
     private static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(Registries.ATTRIBUTE, CataclysmSpellbooks.MOD_ID);
 
     public static final DeferredHolder<Attribute, Attribute> ABYSSAL_MAGIC_RESIST = registerResistanceAttribute("abyssal");
-
     public static final DeferredHolder<Attribute, Attribute> ABYSSAL_MAGIC_POWER = registerPowerAttribute("abyssal");
+
+    public static final DeferredHolder<Attribute, Attribute> TECHNOMANCY_MAGIC_RESIST = registerResistanceAttribute("technomancy");
+    public static final DeferredHolder<Attribute, Attribute> TECHNOMANCY_MAGIC_POWER = registerPowerAttribute("technomancy");
 
     public static void register(IEventBus eventBus)
     {

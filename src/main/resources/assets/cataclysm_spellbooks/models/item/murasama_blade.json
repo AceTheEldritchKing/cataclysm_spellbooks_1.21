@@ -1,0 +1,12 @@
+{
+    "parent": "minecraft:item/handheld",
+    "loader": "neoforge:separate_transforms",
+    "base": {
+        "parent": "cataclysm_spellbooks:item/murasama_blade_held"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "cataclysm_spellbooks:item/murasama_blade_gui"
+        }
+    }
+}

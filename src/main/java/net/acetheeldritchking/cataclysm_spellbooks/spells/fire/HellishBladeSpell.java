@@ -12,7 +12,6 @@ import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
-import io.redspace.ironsspellbooks.entity.spells.EarthquakeAoe;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.CataclysmSpellbooks;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.spells.hellish_blade.HellishBladeProjectile;
@@ -21,13 +20,11 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -100,8 +97,9 @@ public class HellishBladeSpell extends AbstractIgnisSpell {
             {
                 double targetEye = targetEntity.getEyeHeight();
 
-                float damage = getDamage(spellLevel, entity);
-                float bonusDamage = getBonusDamage(spellLevel, entity);
+                final float MAX_HEALTH = entity.getMaxHealth();
+                float baseHealth = entity.getHealth();
+                double percent = (baseHealth/MAX_HEALTH) * 100;
 
                 // Damage if Incinerator is in main hand
                 Item incinerator = ModItems.THE_INCINERATOR.get();
@@ -114,6 +112,18 @@ public class HellishBladeSpell extends AbstractIgnisSpell {
 
                 hellishBlade.moveTo(spawn);
                 hellishBlade.shoot(motion);
+
+                // Eval the damage if soul or not
+                float damage = hellishBlade.getIsSoul() ? getDamage(spellLevel, entity) * 1.5F : getDamage(spellLevel, entity);
+                float bonusDamage = hellishBlade.getIsSoul() ? getBonusDamage(spellLevel, entity) * 1.5F : getBonusDamage(spellLevel, entity);
+
+                if (percent <= 50)
+                {
+                    hellishBlade.setIsSoul(true);
+                } else {
+                    hellishBlade.setIsSoul(false);
+                }
+
                 if (entity.getMainHandItem().is(incinerator))
                 {
                     hellishBlade.setDamage(bonusDamage);
@@ -131,7 +141,7 @@ public class HellishBladeSpell extends AbstractIgnisSpell {
     }
 
     @Override
-    public SpellDamageSource getDamageSource(@Nullable Entity projectile, Entity attacker) {
+    public SpellDamageSource getDamageSource(Entity projectile, Entity attacker) {
         return super.getDamageSource(projectile, attacker);
     }
 

@@ -7,11 +7,14 @@ import com.github.L_Ender.cataclysm.init.ModSounds;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
-import io.redspace.ironsspellbooks.entity.spells.EarthquakeAoe;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.spells.blazing_aoe.BlazingAoE;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.CSEntityRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.SpellRegistries;
 import net.minecraft.core.Holder;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -31,7 +34,12 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.Optional;
 
 public class HellishBladeProjectile extends AbstractMagicProjectile implements GeoEntity {
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
+    private static final EntityDataAccessor<Boolean> SOUL;
+
+    static {
+        SOUL = SynchedEntityData.defineId(HellishBladeProjectile.class, EntityDataSerializers.BOOLEAN);
+    }
 
     public HellishBladeProjectile(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -47,13 +55,13 @@ public class HellishBladeProjectile extends AbstractMagicProjectile implements G
     @Override
     public void trailParticles() {
         Vec3 vec3 = this.position().subtract(getDeltaMovement());
-        level().addParticle(ModParticle.TRAP_FLAME.get(), vec3.x, vec3.y, vec3.z, 0, 0, 0);
+        this.level().addParticle(ModParticle.TRAP_FLAME.get(), vec3.x, vec3.y, vec3.z, 0, 0, 0);
     }
 
     @Override
     public void impactParticles(double x, double y, double z) {
         MagicManager.spawnParticles
-                (level(), ModParticle.TRAP_FLAME.get(), x, y, z, 5, 0, 0, 0, 1, true);
+                (this.level(), ModParticle.TRAP_FLAME.get(), x, y, z, 5, 0, 0, 0, 1, true);
     }
 
     @Override
@@ -87,7 +95,7 @@ public class HellishBladeProjectile extends AbstractMagicProjectile implements G
                 playerTarget.disableShield();
             }
 
-            ScreenShake_Entity.ScreenShake(level(), livingTarget.position(), 20, 0.1F, 20, 40);
+            ScreenShake_Entity.ScreenShake(this.level(), livingTarget.position(), 20, 0.1F, 20, 40);
         }
         discard();
     }
@@ -97,38 +105,35 @@ public class HellishBladeProjectile extends AbstractMagicProjectile implements G
         super.onHit(hitresult);
         createAoEField(hitresult.getLocation());
 
-        // Petty earthquake that's just for visuals
-        // Actually I'm giving it a tiny bit of damage
-        EarthquakeAoe aoe = new EarthquakeAoe(this.level());
-        aoe.moveTo(this.position());
-        aoe.setOwner(this);
-        aoe.setCircular();
-        aoe.setRadius(10);
-        aoe.setDuration(20);
-        aoe.setDamage(1.0F);
-        aoe.setSlownessAmplifier(0);
-
-        this.level().addFreshEntity(aoe);
-
         discard();
     }
 
     public void createAoEField(Vec3 location)
     {
-        if (!level().isClientSide)
+        if (!this.level().isClientSide)
         {
-            BlazingAoE aoE = new BlazingAoE(level());
+            BlazingAoE aoE = new BlazingAoE(this.level());
             aoE.setOwner(getOwner());
             aoE.setDuration(100);
-            aoE.setDamage(1.5F);
-            aoE.setRadius(4.5F);
+            aoE.setDamage(0.5F);
+            aoE.setRadius(3.0F);
             aoE.setCircular();
             aoE.moveTo(location);
-            level().addFreshEntity(aoE);
+            this.level().addFreshEntity(aoE);
         }
     }
 
+    public boolean getIsSoul()
+    {
+        return this.entityData.get(SOUL);
+    }
 
+    public void setIsSoul(boolean soul)
+    {
+        this.entityData.set(SOUL, soul);
+    }
+
+    // Geckolib
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         //
@@ -136,6 +141,24 @@ public class HellishBladeProjectile extends AbstractMagicProjectile implements G
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return cache;
+        return geoCache;
+    }
+
+    // NBT
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        this.entityData.set(SOUL, false);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        this.setIsSoul(pCompound.getBoolean("Soul"));
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        pCompound.putBoolean("Soul", this.getIsSoul());
     }
 }

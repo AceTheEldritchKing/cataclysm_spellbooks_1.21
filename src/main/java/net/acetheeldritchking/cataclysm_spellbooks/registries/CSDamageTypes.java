@@ -11,10 +11,17 @@ import net.minecraft.world.damagesource.DamageType;
 public class CSDamageTypes {
     public static ResourceKey<DamageType> register(String name)
     {
-        return ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "abyssal_magic").toString()));
+        return ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, name).toString()));
     }
 
+    // Magic
     public static final ResourceKey<DamageType> ABYSSAL_MAGIC = register("abyssal_magic");
+    public static final ResourceKey<DamageType> TECHNOMANCY_MAGIC = register("technomancy_magic");
+
+    // AoEs
+    public static final ResourceKey<DamageType> BLAZING_AOE = register("blazing_aoe");
+    public static final ResourceKey<DamageType> NO_MANS_ZONE = register("no_man_zone_aoe");
+    public static final ResourceKey<DamageType> SCORCHED_EARTH = register("scorched_earth_aoe");
 
     public static void bootstrap(BootstrapContext<DamageType> context)
     {

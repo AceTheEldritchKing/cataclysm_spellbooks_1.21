@@ -21,7 +21,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +34,7 @@ public class InfernalStrikeSpell extends AbstractIgnisSpell {
         return List.of(
                 Component.translatable("ui.irons_spellbooks.damage",
                 Utils.stringTruncation(getDamage(spellLevel, caster), 2)),
-                Component.translatable("ui.cataclysm_spellbooks.incinerator_damage",
+                Component.translatable("ui.cataclsym_spellboks.incinerator_damage",
                         Utils.stringTruncation(getBonusDamage(spellLevel, caster), 2)));
     }
 
@@ -80,12 +79,17 @@ public class InfernalStrikeSpell extends AbstractIgnisSpell {
         InfernalBladeProjectile infernalBlade = new InfernalBladeProjectile(level, entity);
         infernalBlade.setPos(entity.position().add(0, entity.getEyeHeight() - infernalBlade.getBoundingBox().getYsize() * .5f, 0));
         infernalBlade.shootFromRotation(entity, entity.getXRot(), entity.getYHeadRot(), 0, 1, 1);
-
         // Damage if Incinerator is in main hand
         Item incinerator = ModItems.THE_INCINERATOR.get();
 
-        float damage = getDamage(spellLevel, entity);
-        float bonusDamage = getBonusDamage(spellLevel, entity);
+        final float MAX_HEALTH = entity.getMaxHealth();
+        float baseHealth = entity.getHealth();
+        double percent = (baseHealth/MAX_HEALTH) * 100;
+
+        // Eval the damage if soul or not
+        float damage = infernalBlade.getIsSoul() ? getDamage(spellLevel, entity) * 1.5F : getDamage(spellLevel, entity);
+        float bonusDamage = infernalBlade.getIsSoul() ? getBonusDamage(spellLevel, entity) * 1.5F : getBonusDamage(spellLevel, entity);
+
         if (entity.getMainHandItem().is(incinerator))
         {
             infernalBlade.setDamage(bonusDamage);
@@ -95,6 +99,13 @@ public class InfernalStrikeSpell extends AbstractIgnisSpell {
             infernalBlade.setDamage(damage);
         }
 
+        if (percent <= 50)
+        {
+            infernalBlade.setIsSoul(true);
+        } else {
+            infernalBlade.setIsSoul(false);
+        }
+
         level.addFreshEntity(infernalBlade);
         //System.out.println("Damage: " + infernalBlade.getDamage());
 
@@ -102,7 +113,7 @@ public class InfernalStrikeSpell extends AbstractIgnisSpell {
     }
 
     @Override
-    public SpellDamageSource getDamageSource(@Nullable Entity projectile, Entity attacker) {
+    public SpellDamageSource getDamageSource(Entity projectile, Entity attacker) {
         return super.getDamageSource(projectile, attacker);
     }
 

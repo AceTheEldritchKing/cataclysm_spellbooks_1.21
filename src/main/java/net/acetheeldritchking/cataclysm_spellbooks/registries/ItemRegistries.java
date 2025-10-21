@@ -106,17 +106,44 @@ public class ItemRegistries {
     // Hellfire Forge
     public static final DeferredHolder<Item, Item> HELLFIRE_FORGE = ITEMS.register("hellfire_forge", HellfireForgeItem::new);
 
+    // Murasama
+
     /***
      * Generic Items
      */
     // Abyssal Rune
     public static final DeferredHolder<Item, Item> ABYSSAL_RUNE = ITEMS.register("abyssal_rune", () -> new Item(ItemPropertiesHelper.material()));
 
+    // Technomancy Rune
+
+    // Mechanical Scrap
+
+    // Excel Mana Upgrade
+
+    // Excel Res Upgrade
+
+    // Excel CD Upgrade
+
+    // Burning Knowledge Fragment
+
+    // Burning Manuscript
+
+    // Frozen Knowledge Fragment
+
+    // Frozen Tablet
+
+    // Strange Disc
+
+    // Mechanical Weapon Parts
+
     /***
      * Upgrade Orbs
      */
     public static final DeferredHolder<Item, Item> ABYSSAL_UPGRADE_ORB = ITEMS.register("abyssal_upgrade_orb",
             () -> new UpgradeOrbItem(ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON).component(ComponentRegistry.UPGRADE_ORB_TYPE, CSUpgradeOrbTypeRegistry.ABYSSAL_SPELL_POWER)));
+
+    public static final DeferredHolder<Item, Item> TECHNOMANCY_UPGRADE_ORB = ITEMS.register("technomancy_upgrade_orb",
+            () -> new UpgradeOrbItem(ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON).component(ComponentRegistry.UPGRADE_ORB_TYPE, CSUpgradeOrbTypeRegistry.TECHNOMANCY_SPELL_POWER)));
 
     /***
      * Curios
@@ -148,14 +175,56 @@ public class ItemRegistries {
     public static final DeferredHolder<Item, Item> CURSIUM_MAGE_BOOTS = ITEMS.register("cursium_mage_boots", () -> new CursiumMageArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
     // Pharaoh Mage Set
+    public static final DeferredHolder<Item, Item> PHARAOH_MAGE_HELMET = ITEMS.register("pharaoh_helmet",
+            () -> new PharaohMageArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> PHARAOH_MAGE_CHESTPLATE = ITEMS.register("pharaoh_chestplate",
+            () -> new PharaohMageArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> PHARAOH_MAGE_LEGGINGS = ITEMS.register("pharaoh_leggings",
+            () -> new PharaohMageArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> PHARAOH_MAGE_BOOTS = ITEMS.register("pharaoh_greaves",
+            () -> new PharaohMageArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
-    // Technomancer Mage set
+    // Bloom Stone Mage Set
+    public static final DeferredHolder<Item, Item> BLOOM_STONE_HAT = ITEMS.register("bloom_stone_hat",
+            () -> new BloomStoneMageArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> BLOOM_STONE_CHESTPLATE = ITEMS.register("bloom_stone_chestplate",
+            () -> new BloomStoneMageArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> BLOOM_STONE_SKIRT = ITEMS.register("bloom_stone_skirt",
+            () -> new BloomStoneMageArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> BLOOM_STONE_GREAVES = ITEMS.register("bloom_stone_greaves",
+            () -> new BloomStoneMageArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
     // Monstrous Wizard Hat
+    public static final DeferredHolder<Item, Item> MONSTROUS_WIZARD_HAT = ITEMS.register("monstrous_wizard_hat",
+            () -> new MonstrousWizardHatArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
 
-    // Boulder Blossom Mage Set
+    // Technomancer Mage set
+    public static final DeferredHolder<Item, Item> ENGINEER_MAGE_HOOD = ITEMS.register("engineer_hood",
+            () -> new EngineerMageArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> ENGINEER_MAGE_SUIT = ITEMS.register("engineer_suit",
+            () -> new EngineerMageArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> ENGINEER_MAGE_LEGGINGS = ITEMS.register("engineer_leggings",
+            () -> new EngineerMageArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> ENGINEER_MAGE_BOOTS = ITEMS.register("engineer_boots",
+            () -> new EngineerMageArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
     // Excelsius Mage Set
+    public static final DeferredHolder<Item, Item> EXCELSIUS_SPEED_HELMET = ITEMS.register("excelsius_speed_visors",
+            () -> new ExcelsiusCooldownArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> EXCELSIUS_SPEED_CHESTPLATE = ITEMS.register("excelsius_speed_chestplate",
+            () -> new ExcelsiusCooldownArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> EXCELSIUS_POWER_HELMET = ITEMS.register("excelsius_power_visors",
+            () -> new ExcelsiusPowerArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> EXCELSIUS_POWER_CHESTPLATE = ITEMS.register("excelsius_power_chestplate",
+            () -> new ExcelsiusPowerArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> EXCELSIUS_RESIST_HELMET = ITEMS.register("excelsius_resist_visors",
+            () -> new ExcelsiusResistArmorItem(ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final DeferredHolder<Item, Item> EXCELSIUS_RESIST_CHESTPLATE = ITEMS.register("excelsius_resist_chestplate",
+            () -> new ExcelsiusResistArmorItem(ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final DeferredHolder<Item, Item> EXCELSIUS_WARLOCK_LEGGINGS = ITEMS.register("excelsius_leggings",
+            () -> new ExcelsiusLegArmorItem(ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final DeferredHolder<Item, Item> EXCELSIUS_WARLOCK_BOOTS = ITEMS.register("excelsius_greaves",
+            () -> new ExcelsiusLegArmorItem(ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
 
     public static Collection<DeferredHolder<Item, ? extends Item>> getCSItems()

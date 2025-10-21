@@ -13,7 +13,13 @@ public class InfernalBladeModel extends GeoModel<InfernalBladeProjectile> {
 
     @Override
     public ResourceLocation getTextureResource(InfernalBladeProjectile object) {
-        return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/infernal_blade_small/infernal_blade_small.png");
+        if (object.getIsSoul())
+        {
+            return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/infernal_blade_small/infernal_blade_small_soul.png");
+        } else
+        {
+            return ResourceLocation.fromNamespaceAndPath(CataclysmSpellbooks.MOD_ID, "textures/entity/infernal_blade_small/infernal_blade_small.png");
+        }
     }
 
     @Override

@@ -10,6 +10,10 @@ import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.CSEntityRegistry;
 import net.acetheeldritchking.cataclysm_spellbooks.registries.SpellRegistries;
 import net.minecraft.core.Holder;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -24,14 +28,17 @@ import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
-import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
 
 public class InfernalBladeProjectile extends AbstractMagicProjectile implements GeoEntity {
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
+    private static final EntityDataAccessor<Boolean> SOUL;
+
+    static {
+        SOUL = SynchedEntityData.defineId(InfernalBladeProjectile.class, EntityDataSerializers.BOOLEAN);
+    }
 
     public InfernalBladeProjectile(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -54,13 +61,6 @@ public class InfernalBladeProjectile extends AbstractMagicProjectile implements 
         }
     }
 
-    public void setRotation(float x, float y) {
-        this.setXRot(x);
-        this.xRotO = x;
-        this.setYRot(y);
-        this.yRotO = y;
-    }
-
     @Override
     public void tick() {
         Vec3 deltaMovement = getDeltaMovement();
@@ -80,13 +80,13 @@ public class InfernalBladeProjectile extends AbstractMagicProjectile implements 
     @Override
     public void trailParticles() {
         Vec3 vec3 = this.position().subtract(getDeltaMovement());
-        level().addParticle(ParticleHelper.EMBERS, vec3.x, vec3.y, vec3.z, 0, 0, 0);
+        this.level().addParticle(ParticleHelper.EMBERS, vec3.x, vec3.y, vec3.z, 0, 0, 0);
     }
 
     @Override
     public void impactParticles(double x, double y, double z) {
         MagicManager.spawnParticles
-                (level(), ModParticle.TRAP_FLAME.get(), x, y, z, 5, 0, 0, 0, 1, true);
+                (this.level(), ModParticle.TRAP_FLAME.get(), x, y, z, 5, 0, 0, 0, 1, true);
     }
 
     @Override
@@ -122,6 +122,16 @@ public class InfernalBladeProjectile extends AbstractMagicProjectile implements 
         discard();
     }
 
+    public boolean getIsSoul()
+    {
+        return this.entityData.get(SOUL);
+    }
+
+    public void setIsSoul(boolean soul)
+    {
+        this.entityData.set(SOUL, soul);
+    }
+
     // Geckolib
     private final AnimationController<InfernalBladeProjectile> animationController = new AnimationController<>(this, "controller", 0, this::predicate);
 
@@ -132,7 +142,7 @@ public class InfernalBladeProjectile extends AbstractMagicProjectile implements 
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return cache;
+        return geoCache;
     }
 
     private PlayState predicate(AnimationState<InfernalBladeProjectile> event)
@@ -141,5 +151,23 @@ public class InfernalBladeProjectile extends AbstractMagicProjectile implements 
         event.getController().setAnimation(RawAnimation.begin().then("animation.infernal_blade_small.idle", Animation.LoopType.LOOP));
 
         return PlayState.CONTINUE;
+    }
+
+    // NBT
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        this.entityData.set(SOUL, false);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        this.setIsSoul(pCompound.getBoolean("Soul"));
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        pCompound.putBoolean("Soul", this.getIsSoul());
     }
 }

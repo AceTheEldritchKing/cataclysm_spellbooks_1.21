@@ -11,4 +11,5 @@ public class CSUpgradeOrbTypeRegistry {
     public static ResourceKey<UpgradeOrbType> ABYSSAL_SPELL_POWER = ResourceKey.create(UpgradeOrbTypeRegistry.UPGRADE_ORB_REGISTRY_KEY, CataclysmSpellbooks.id("abyssal_power"));
 
     // Technomancy
+    public static ResourceKey<UpgradeOrbType> TECHNOMANCY_SPELL_POWER = ResourceKey.create(UpgradeOrbTypeRegistry.UPGRADE_ORB_REGISTRY_KEY, CataclysmSpellbooks.id("technomancy_power"));
 }

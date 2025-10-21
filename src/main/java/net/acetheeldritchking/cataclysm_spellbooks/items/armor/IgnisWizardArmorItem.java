@@ -14,7 +14,15 @@ import java.util.List;
 
 public class IgnisWizardArmorItem extends ImbuableCSArmorItem{
     public IgnisWizardArmorItem(Type slot, Properties settings) {
-        super(CSArmorMaterialRegistry.IGNITIUM_WIZARD_ARMOR, slot, settings, schoolAttributesWithResistance(AttributeRegistry.FIRE_SPELL_POWER, AttributeRegistry.FIRE_MAGIC_RESIST, 150, 0.2F, 0.05F, 0.1F));
+        super(CSArmorMaterialRegistry.IGNITIUM_WIZARD_ARMOR, slot, settings,
+                schoolAttributesWithResistance(
+                        AttributeRegistry.FIRE_SPELL_POWER,
+                        AttributeRegistry.FIRE_MAGIC_RESIST,
+                        150,
+                        0.2F,
+                        0.05F,
+                        0.1F)
+        );
     }
 
     // Ignis Wizard Armor should have durability compat with Cataclysm?

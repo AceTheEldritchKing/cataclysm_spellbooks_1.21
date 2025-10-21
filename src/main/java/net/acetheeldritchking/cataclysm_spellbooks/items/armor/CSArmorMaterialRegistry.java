@@ -49,6 +49,51 @@ public class CSArmorMaterialRegistry {
             3,
             0.1F);
 
+    // Pharaoh Mage Armor
+    public static DeferredHolder<ArmorMaterial, ArmorMaterial> PHARAOH_MAGE_ARMOR = register("pharaoh_mage_armor",
+            warlockArmorMap(),
+            25,
+            SoundEvents.ARMOR_EQUIP_GOLD,
+            () -> Ingredient.of(ModItems.ANCIENT_METAL_INGOT.get()),
+            3,
+            0.1F);
+
+    // Boulder Blossom Armor
+    public static DeferredHolder<ArmorMaterial, ArmorMaterial> BOULDER_BLOSSOM_ARMOR = register("boulder_blossom_armor",
+            warlockArmorMap(),
+            25,
+            SoundEvents.ARMOR_EQUIP_TURTLE,
+            () -> Ingredient.of(ModItems.AMETHYST_CRAB_SHELL.get()),
+            3,
+            0.1F);
+
+    // Monstrous Wizard Hat
+    public static DeferredHolder<ArmorMaterial, ArmorMaterial> MONSTROUS_WIZARD_ARMOR = register("monstrous_wizard",
+            baseArmorMap(),
+            25,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.of(ModItems.MONSTROUS_HORN.get()),
+            3,
+            0.2F);
+
+    // Technomancer Mage Armor
+    public static DeferredHolder<ArmorMaterial, ArmorMaterial> ENGINEER_ARMOR = register("engineer_armor",
+            baseArmorMap(),
+            25,
+            SoundEvents.ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.of(ModItems.MONSTROUS_HORN.get()),
+            3,
+            0.2F);
+
+    // Excelsius Warlock Armor
+    public static DeferredHolder<ArmorMaterial, ArmorMaterial> EXCELSIUS_WARLOCK_ARMOR = register("excelsius_warlock_armor",
+            baseArmorMap(),
+            25,
+            SoundEvents.ARMOR_EQUIP_LEATHER,
+            () -> Ingredient.of(ModItems.WITHERITE_INGOT.get()),
+            3,
+            0.2F);
+
 
     private static DeferredHolder<ArmorMaterial, ArmorMaterial> register(
             String name,
@@ -79,9 +124,9 @@ public class CSArmorMaterialRegistry {
         return makeArmorMap(4, 9, 7, 4);
     }
 
-    public static EnumMap<ArmorItem.Type, Integer> eldritchKingArmorMap()
+    public static EnumMap<ArmorItem.Type, Integer> baseArmorMap()
     {
-        return makeArmorMap(6, 11, 9, 6);
+        return makeArmorMap(3, 6, 8, 3);
     }
 
     public static void register(IEventBus eventBus)
