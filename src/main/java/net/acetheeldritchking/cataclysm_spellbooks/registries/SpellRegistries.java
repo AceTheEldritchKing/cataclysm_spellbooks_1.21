@@ -55,6 +55,8 @@ public class SpellRegistries {
 
     // Tidal Claw (Summons Tidal Claw that grabs target) - Requires Tidal Claw
     public static final Supplier<AbstractSpell> TIDAL_GRAB = registerSpell(new TidalGrabSpell());
+    
+    // Cavitation Bubble (Shoot out a hyper pressurized bubble that explodes on impact. Scales with fire spell power)
 
 
     // ENDER //
